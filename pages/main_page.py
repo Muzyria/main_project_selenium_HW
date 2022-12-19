@@ -19,6 +19,7 @@ class Main_page(Base):
 
     select_pc_configurator = '//a[@id="out-link-5"]'
     select_tip_button_skip = '//b[@class="dg-btn dg-skip"]'
+    select_subscribe_close = '//div[@id="subscribe-deny"]'
 
     # Getters
 
@@ -27,6 +28,9 @@ class Main_page(Base):
 
     def get_tip_button_skip(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_tip_button_skip)))
+
+    def get_subscribe_close(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_subscribe_close)))
 
     # Actions
 
@@ -38,6 +42,10 @@ class Main_page(Base):
         self.get_tip_button_skip().click()
         print('Click tip button skip')
 
+    def click_subscribe_close(self):
+        self.get_subscribe_close().click()
+        print('Click subscribe close')
+
     # Methods
 
     def open_main_page(self):
@@ -45,6 +53,7 @@ class Main_page(Base):
         self.driver.maximize_window()
         self.get_current_url()
         self.click_pc_configurator()
+        self.click_subscribe_close()
         self.click_tip_button_skip()
 
 
