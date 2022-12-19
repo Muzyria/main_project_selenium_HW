@@ -12,7 +12,7 @@ from pages.main_page import Main_page
 
 
 # @pytest.mark.run(order=1)
-def test_by_product_1():
+def test_by_main_page():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     print('Start tests 1')

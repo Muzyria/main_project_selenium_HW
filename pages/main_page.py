@@ -15,21 +15,18 @@ class Main_page(Base):
 
     # Locators
 
-    select_product_1 = '//button[@id="add-to-cart-sauce-labs-backpack"]'
-
+    select_language_ru = '//span[@class="mh-lang__item active"]'
 
     # Getters
 
-    def get_select_product_1(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_1)))
-
+    def get_select_language_ru(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_language_ru)))
 
     # Actions
 
-    # def click_select_product_1(self):
-    #     self.get_select_product_1().click()
-    #     print('Click select product_1')
-
+    def click_select_language_ru(self):
+        self.get_select_language_ru().click()
+        print('Click select language RU')
 
     # Methods
 
@@ -37,6 +34,7 @@ class Main_page(Base):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
+        self.click_select_language_ru()
 
 
 
