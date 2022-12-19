@@ -1,5 +1,6 @@
 import datetime
 
+from selenium.webdriver.common.alert import Alert
 
 class Base():
 
@@ -32,3 +33,13 @@ class Base():
         get_url = self.driver.current_url
         assert get_url == result
         print('Good value url')
+
+    """Method dismiss alert"""
+
+    def dismiss_alert(self):
+        self.driver.switch_to.alert.dismiss()
+
+
+
+
+
