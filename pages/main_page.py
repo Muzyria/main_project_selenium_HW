@@ -15,7 +15,7 @@ class Main_page(Base):
 
     # Locators
 
-    select_language_ru = '//span[@class="mh-lang__item active"]'
+    select_language_ru = '//span[@class="mh-lang__item"]'
 
     # Getters
 
