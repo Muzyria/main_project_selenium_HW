@@ -16,14 +16,15 @@ class Pc_config_page(Base):
     # Locators
 
     select_cpu_list_link = '//*[text()="Процессор"]'
+    select_list_items_cpu = '//div[@class="scrl-blu cat-products"]'  # list CPU
 
     # Getters
 
     def get_cpu_list_link(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cpu_list_link)))
 
-    # def get_tip_button_skip(self):
-    #     return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_tip_button_skip)))
+    def get_list_items_cpu(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_list_items_cpu)))
     #
     # def get_subscribe_close(self):
     #     return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_subscribe_close)))
@@ -34,16 +35,13 @@ class Pc_config_page(Base):
         self.get_cpu_list_link().click()
         print('Click cpu list link')
 
-    # def click_tip_button_skip(self):
-    #     self.get_tip_button_skip().click()
-    #     print('Click tip button skip')
-    #
-    # def click_subscribe_close(self):
-    #     self.get_subscribe_close().click()
-    #     print('Click subscribe close')
+    def pull_list_items_cpu(self):
+        self.get_cpu_list_link().click()
+        print('Click cpu list link')
 
     # Methods
 
     def open_cpu_list_link(self):
         self.get_current_url()
         self.click_cpu_list_link()
+        print(self.pull_list_items_cpu().value())
