@@ -41,12 +41,6 @@ class Base():
 
     """Method dismiss alert"""
 
-    def dismiss_alert(self):
-        try:
-
-            self.driver.refresh()
-        except Exception:
-            print("exception hanlded")
 
 
 

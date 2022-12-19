@@ -9,7 +9,7 @@ from base.base_class import Base
 
 class Main_page(Base):
 
-    url = 'https://allo.ua/'
+    url = 'https://elmir.ua/'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -17,35 +17,26 @@ class Main_page(Base):
 
     # Locators
 
-    select_language_ru = '//span[@class="mh-lang__item"]'
-    select_location = '//div[@class="mh-loc"]'
-    select_city_lviv = 'href="https://allo.ua/ru/l-viv/"'
-
+    select_pc_configurator = '//a[@id="out-link-5"]'
+    select_tip_button_skip = '//b[@class="dg-btn dg-skip"]'
 
     # Getters
 
-    def get_select_language_ru(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_language_ru)))
+    def get_pc_configurator(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_pc_configurator)))
 
-    def get_select_location(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_location)))
-
-    def get_select_city_lviv(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_city_lviv)))
+    def get_tip_button_skip(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_tip_button_skip)))
 
     # Actions
 
-    def click_select_language_ru(self):
-        self.get_select_language_ru().click()
-        print('Click select language RU')
+    def click_pc_configurator(self):
+        self.get_pc_configurator().click()
+        print('Click pc configurator')
 
-    def click_select_location(self):
-        self.get_select_location().click()
-        print('Click select location')
-
-    def click_select_city_lviv(self):
-        self.get_select_city_lviv().click()
-        print('Click select city lviv')
+    def click_tip_button_skip(self):
+        self.get_tip_button_skip().click()
+        print('Click tip button skip')
 
     # Methods
 
@@ -53,12 +44,10 @@ class Main_page(Base):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
-        # self.click_select_language_ru()
+        self.click_pc_configurator()
+        self.click_tip_button_skip()
 
-        # self.dismiss_alert()
-        # self.click_select_location()
-        # self.click_select_city_lviv()
-        self.dismiss_alert()
+
 
 
 
