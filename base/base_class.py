@@ -1,8 +1,11 @@
 import datetime
+import time
 
 from selenium.common import NoAlertPresentException
+from selenium.webdriver import Keys
+from selenium.webdriver.common import desired_capabilities
 from selenium.webdriver.common.alert import Alert
-
+from selenium.webdriver.chrome.options import Options
 
 class Base():
 
@@ -40,9 +43,9 @@ class Base():
 
     def dismiss_alert(self):
         try:
-            # switch to alert and click ok button
-            self.driver.switch_to.alert.accept()
-        except NoAlertPresentException:
+
+            self.driver.refresh()
+        except Exception:
             print("exception hanlded")
 
 
