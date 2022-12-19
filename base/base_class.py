@@ -1,6 +1,8 @@
 import datetime
 
+from selenium.common import NoAlertPresentException
 from selenium.webdriver.common.alert import Alert
+
 
 class Base():
 
@@ -37,7 +39,11 @@ class Base():
     """Method dismiss alert"""
 
     def dismiss_alert(self):
-        self.driver.switch_to.alert.dismiss()
+        try:
+            # switch to alert and click ok button
+            self.driver.switch_to.alert.accept()
+        except NoAlertPresentException:
+            print("exception hanlded")
 
 
 

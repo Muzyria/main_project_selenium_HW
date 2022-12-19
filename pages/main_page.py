@@ -1,4 +1,6 @@
 import time
+
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -52,8 +54,13 @@ class Main_page(Base):
         self.driver.maximize_window()
         self.get_current_url()
         # self.click_select_language_ru()
-        time.sleep(3)
-        self.dismiss_alert()
+
+        # self.dismiss_alert()
         # self.click_select_location()
         # self.click_select_city_lviv()
+        self.dismiss_alert()
+
+
+
+
 

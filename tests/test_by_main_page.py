@@ -21,5 +21,5 @@ def test_by_main_page():
     mp = Main_page(driver)
     mp.open_main_page()
 
-    time.sleep(7)
+    time.sleep(700)
     driver.quit()
