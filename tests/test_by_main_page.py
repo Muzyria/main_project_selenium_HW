@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+from pages.cell_phones_pages import Cell_phones_page
 from pages.main_page import Main_page
 from pages.mobile_connection import Mobile_connection_page
 
@@ -19,6 +20,9 @@ def test_by_main_page():
 
     mc = Mobile_connection_page(driver)
     mc.open_cell_phones()
+
+    cp = Cell_phones_page(driver)
+    cp.open_cell_phones()
 
     time.sleep(10)
     driver.quit()

@@ -2,10 +2,12 @@ import datetime
 import time
 
 from selenium.common import NoAlertPresentException
-from selenium.webdriver import Keys
+from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.common import desired_capabilities
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+
 
 class Base():
 
@@ -39,8 +41,12 @@ class Base():
         assert get_url == result
         print('Good value url')
 
-    """Method dismiss alert"""
+    """Method Slider R"""
 
+    def slider_right(self, locator, value):
+        action = ActionChains(self.driver)
+        slider = self.driver.find_element(By.XPATH, locator)
+        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
 
 
 
