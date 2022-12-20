@@ -53,7 +53,13 @@ class NoTest1:
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul')))
         for item in item_list_2:
             print(item.text)
-        print('Prin List 1')
+        print('Prin List 2 ---------------------------')
+
+        item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
+        for item in item_list_3:
+            print(item.text)
+        print('Prin List 3 --------------------------------')
 
 
 
