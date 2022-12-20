@@ -59,7 +59,7 @@ class Base():
         action = ActionChains(self.driver)
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = random.randint(-1, -40)
-        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+        action.click_and_hold(slider).move_by_offset(-20, 0).release().perform()
         print(f'price_slider_left move to {value}')
 
 
