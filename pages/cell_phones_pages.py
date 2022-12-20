@@ -18,7 +18,7 @@ class Cell_phones_page(Base):
 
     select_price_slider_left = '//span[@id="leftBegun_two"]'
     select_price_input_min = '//input[@id="minPrice"]'
-    select_price_input_max = '//input[@id="maxPrice"'
+    select_price_input_max = '//input[@id="maxPrice"]'
     select_price_button_ok = '//button[@type="submit"]'
 
     select_manufacturer_apple = '//input[@id="idm45757727913408"]'
@@ -70,10 +70,8 @@ class Cell_phones_page(Base):
     def open_cell_phones(self):
         self.get_current_url()
         self.move_price_slider_left()
-        self.click_price_button_ok()
 
         self.input_price_input_min()
-        self.click_price_button_ok()
 
         self.input_price_input_max()
         self.click_price_button_ok()
