@@ -1,6 +1,6 @@
 import time
 
-
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,7 +25,10 @@ class Cell_phones_page(Base):
     # Actions
 
     def move_price_slider_left(self):
-        self.slider_right(self.get_price_slider_left(), 50)
+        # self.slider_right(self.get_price_slider_left(), 50)
+        action = ActionChains(self.driver)
+        slider = self.driver.find_element(By.XPATH, self.select_price_slider_left)
+        action.click_and_hold(slider).move_by_offset(40, 0).release().perform()
         print('Move price_slider_left')
 
     # Methods

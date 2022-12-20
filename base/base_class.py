@@ -43,10 +43,10 @@ class Base():
 
     """Method Slider R"""
 
-    def slider_right(self, locator, value):
-        action = ActionChains(self.driver)
-        slider = self.driver.find_element(By.XPATH, locator)
-        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+    # def slider_right(self, locator, value):
+    #     action = ActionChains(self.driver)
+    #     slider = self.driver.find_element(By.XPATH, locator)
+    #     action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
 
 
 
