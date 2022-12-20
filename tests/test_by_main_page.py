@@ -24,5 +24,5 @@ def test_by_main_page():
     cp = Cell_phones_page(driver)
     cp.open_cell_phones()
 
-    time.sleep(10)
+    time.sleep(5)
     driver.quit()
