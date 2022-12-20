@@ -1,5 +1,6 @@
 import datetime
 import time
+import random
 
 from selenium.common import NoAlertPresentException
 from selenium.webdriver import Keys, ActionChains
@@ -7,6 +8,8 @@ from selenium.webdriver.common import desired_capabilities
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Base():
@@ -41,14 +44,19 @@ class Base():
         assert get_url == result
         print('Good value url')
 
+    """Method Slider L"""
+
+    def slider_left(self, locator):
+        action = ActionChains(self.driver)
+        slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
+        action.click_and_hold(slider).move_by_offset(random.randint(1, 50), 0).release().perform()
+
     """Method Slider R"""
 
-    # def slider_right(self, locator, value):
-    #     action = ActionChains(self.driver)
-    #     slider = self.driver.find_element(By.XPATH, locator)
-    #     action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-
-
+    def slider_right(self, locator):
+        action = ActionChains(self.driver)
+        slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
+        action.click_and_hold(slider).move_by_offset(random.randint(50, 100), 0).release().perform()
 
 
 
