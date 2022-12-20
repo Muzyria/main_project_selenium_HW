@@ -30,6 +30,7 @@ class Cell_phones_page(Base):
 
     def move_price_slider_left(self):
         self.slider_right(self.select_price_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
+        # print(f'price_slider_left move to ')
 
     def move_price_slider_right(self):
         self.slider_right(self.select_price_slider_right)  # Правый слайдер двигаем в лево рандомно от 100 до 50%
