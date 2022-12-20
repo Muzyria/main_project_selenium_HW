@@ -21,7 +21,7 @@ class Cell_phones_page(Base):
     select_price_input_max = '//input[@id="maxPrice"]'
     select_price_button_ok = '//button[@type="submit"]'
 
-    select_manufacturer_apple = '//input[@id="idm45757727913408"]'
+    select_manufacturer_apple = '//*[@id="list-0"]/li[3]/a/label'
 
     # Getters
 
@@ -45,10 +45,6 @@ class Cell_phones_page(Base):
     def move_price_slider_left(self):
         self.slider_left(self.select_price_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
 
-    def click_manufacturer_apple(self):
-        self.get_manufacturer_apple().click()
-        print('')
-
     def click_price_button_ok(self):
         self.get_price_button_ok().click()
         print('click_price_button_ok')
@@ -65,6 +61,11 @@ class Cell_phones_page(Base):
         self.get_price_input_max().send_keys(value)
         print(f'input_price_input_max {value}')
 
+    def click_manufacturer_apple(self):
+        self.get_manufacturer_apple().click()
+        print('click_manufacturer_apple')
+
+
     # Methods
 
     def open_cell_phones(self):
@@ -75,6 +76,6 @@ class Cell_phones_page(Base):
 
         self.input_price_input_max()
         self.click_price_button_ok()
-        # self.click_manufacturer_apple()
+        self.click_manufacturer_apple()
 
 
