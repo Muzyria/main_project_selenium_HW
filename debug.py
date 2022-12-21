@@ -70,7 +70,10 @@ class NoTest1(Base):
         for item_3 in my_list:
             n = ' '.join(str(item_3).split(' ')[:-1])
             print(n)
-            ActionChains(self.driver).move_to_element(f'//*[text()="{n} "]').perform()
+
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
+            actions = ActionChains(self.driver)
+            actions.move_to_element(element).perform()
             WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
 
 
