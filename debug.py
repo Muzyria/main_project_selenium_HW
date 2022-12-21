@@ -23,12 +23,7 @@ class NoTest1(Base):
         self.driver.maximize_window()
 
     def select_product(self):
-        global s
-        EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
-        ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
-        CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
-        TITLE_ITEM = ".//ancestor::span[@class='rct-text']"
-        OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
+
 
         print('Start test')
 
@@ -56,19 +51,12 @@ class NoTest1(Base):
 
         item_list_2 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul')))
-        for item in item_list_2:
 
-            print(item.text)
-        print('Prin List 2 ---------------------------')
-
-        item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
-
-        s = [i.text for i in item_list_3]
+        s = [i.text for i in item_list_2]
         my_list = list(map(str, s[0].split('\n')))
 
-        for item_3 in my_list:
-            n = ' '.join(str(item_3).split(' ')[:-1])
+        for item_2 in my_list:
+            n = ' '.join(str(item_2).split(' ')[:-1])
             print(n)
 
             element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
@@ -77,18 +65,24 @@ class NoTest1(Base):
             WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
 
 
-        # for item_3 in item_list_3:
+        print('Prin List 2 ---------------------------')
+
+        item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
+
+        # s = [i.text for i in item_list_3]
+        # my_list = list(map(str, s[0].split('\n')))
         #
-        #     self.driver.execute_script("arguments[0].scrollIntoView();", item_3)
-        #     item_3.click()
-        #     print(' '.join(str(item_3.text).split(' ')[:-1]))
+        # for item_3 in my_list:
+        #     n = ' '.join(str(item_3).split(' ')[:-1])
+        #     print(n)
+        #
+        #     element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
+        #     actions = ActionChains(self.driver)
+        #     actions.move_to_element(element).perform()
+        #     WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
 
         print('Prin List 3 --------------------------------')
-
-
-
-
-
 
 test = NoTest1()
 test.select_product()
