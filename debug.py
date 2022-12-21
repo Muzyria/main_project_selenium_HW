@@ -9,8 +9,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
+from base.base_class import Base
 
-class NoTest1:
+
+class NoTest1(Base):
 
     def __init__(self):
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -57,15 +59,34 @@ class NoTest1:
 
         item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
+
+        my_lst = []
         for item in item_list_3:
             print(item.text)
+            my_lst.append(item)
         print('Prin List 3 --------------------------------')
+        print(my_lst)
 
 
+
+    def click_random_checkbox(self):
+        item_list = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
+        count = 21
+        while count != 0:
+            item = item_list[random.randint(1, 15)]
+            if count > 0:
+                self.go_to_element(item)
+                item.click()
+                time.sleep(0.5)
+                count -= 1
+            else:
+                break
 
 
 test = NoTest1()
 test.select_product()
+# test.click_random_checkbox()
 time.sleep(5)
 test.driver.close()
 
