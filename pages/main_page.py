@@ -17,17 +17,17 @@ class Main_page(Base):
 
     # Locators
 
-    select_link_mobile = '//a[@id="tab-5"]'
+    select_pc_config = '//a[@id="out-link-5"]'
 
     # Getters
 
-    def get_link_mobile(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_link_mobile)))
+    def get_pc_config(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_pc_config)))
 
     # Actions
 
-    def click_link_mobile(self):
-        self.get_link_mobile().click()
+    def click_cp_config(self):
+        self.get_pc_config().click()
         print('Click link mobile')
 
     # Methods
@@ -36,7 +36,7 @@ class Main_page(Base):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
-        self.click_link_mobile()
+        self.click_cp_config()
 
 
 

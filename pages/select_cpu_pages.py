@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 
 
-class Cell_phones_page(Base):
+class CPU_page(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -16,12 +16,12 @@ class Cell_phones_page(Base):
 
     # Locators
 
-    select_price_slider_left = '//span[@id="leftBegun_two"]'
+    select_price_slider_left = '//span[@class="ui-slider-handle ui-corner-all ui-state-default"]'
     select_price_input_min = '//input[@id="minPrice"]'
     select_price_input_max = '//input[@id="maxPrice"]'
     select_price_button_ok = '//button[@type="submit"]'
 
-    select_manufacturer_apple = '//*[@id="list-0"]/li[3]/a/label'
+    # select_manufacturer_apple = '//*[@id="list-0"]/li[3]/a/label'
 
     # Getters
 
@@ -68,7 +68,7 @@ class Cell_phones_page(Base):
 
     # Methods
 
-    def open_cell_phones(self):
+    def select_cpu(self):
         self.get_current_url()
         self.move_price_slider_left()
 
@@ -76,6 +76,6 @@ class Cell_phones_page(Base):
 
         self.input_price_input_max()
         self.click_price_button_ok()
-        self.click_manufacturer_apple()
+        # self.click_manufacturer_apple()
 
 

@@ -39,30 +39,19 @@ class NoTest1(Base):
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div'))).click()
 
-        print('Click CPU')
+        print('Click GPU')
 
-        item_list = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul')))
-        for item in item_list:
-
-            print(item.text)
-        print('Prin List 1')
+        # item_list = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+        #                                                                  '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul')))
+        # for item in item_list:
+        #
+        #     print(item.text)
+        # print('Prin List 1')
 
         item_list_2 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul')))
 
-        # s = [i.text for i in item_list_2]
-        # my_list = list(map(str, s[0].split('\n')))
-        #
-        # for item_2 in my_list:
-        #     n = ' '.join(str(item_2).split(' ')[:-1])
-        #     print(n)
-        #
-        #     element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
-        #     actions = ActionChains(self.driver)
-        #     actions.move_to_element(element).perform()
-        #     WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
-        #
+
         s = [i.text for i in item_list_2]
         my_list = list(map(str, s[0].split('\n')))
 
@@ -77,7 +66,7 @@ class NoTest1(Base):
                 # actions.move_to_element(element).perform()
                 WebDriverWait(self.driver, 30).until(
                     EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
-                time.sleep(0.3)
+                time.sleep(0.2)
             except Exception:
                 continue
 
@@ -86,8 +75,6 @@ class NoTest1(Base):
 
         item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
-
-
 
         s = [i.text for i in item_list_3]
         my_list = list(map(str, s[0].split('\n')))
@@ -106,6 +93,28 @@ class NoTest1(Base):
             except Exception:
                 continue
         print('Prin List 3 --------------------------------')
+
+        item_list_4 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+                                                                                                  '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[5]/ul')))
+
+        s = [i.text for i in item_list_4]
+        my_list = list(map(str, s[0].split('\n')))
+
+        for item_4 in my_list:
+            n = ' '.join(str(item_4).split(' ')[:-1])
+            print(n)
+
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
+            try:
+                self.driver.execute_script("arguments[0].scrollIntoView();", element)
+                # actions = ActionChains(self.driver)
+                # actions.move_to_element(element).perform()
+                WebDriverWait(self.driver, 30).until(
+                    EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
+                time.sleep(0.3)
+            except Exception:
+                continue
+        print('Prin List 4 --------------------------------')
 
 test = NoTest1()
 test.select_product()
