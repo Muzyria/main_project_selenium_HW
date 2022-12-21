@@ -24,7 +24,6 @@ class NoTest1(Base):
 
     def select_product(self):
 
-
         print('Start test')
 
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH,
