@@ -22,6 +22,7 @@ class NoTest1(Base):
         self.driver.maximize_window()
 
     def select_product(self):
+        global s
         EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
         ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
         CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
@@ -62,12 +63,18 @@ class NoTest1(Base):
         item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
 
-        for item in item_list_3:
-            time.sleep(3)
-            self.go_to_element(item)
-            item.click()
-            print(item.text)
+        s = [i.text for i in item_list_3]
+        print(s[0])
+
+
+        # for item_3 in item_list_3:
+        #
+        #     self.driver.execute_script("arguments[0].scrollIntoView();", item_3)
+        #     item_3.click()
+        #     print(' '.join(str(item_3.text).split(' ')[:-1]))
+
         print('Prin List 3 --------------------------------')
+
 
 
 
@@ -76,7 +83,7 @@ class NoTest1(Base):
 test = NoTest1()
 test.select_product()
 # test.click_random_checkbox()
-time.sleep(5)
+time.sleep(2)
 test.driver.close()
 
 
