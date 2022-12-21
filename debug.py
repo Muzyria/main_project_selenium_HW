@@ -48,40 +48,29 @@ class NoTest1(Base):
         item_list = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul')))
         for item in item_list:
+
             print(item.text)
         print('Prin List 1')
 
         item_list_2 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul')))
         for item in item_list_2:
+
             print(item.text)
         print('Prin List 2 ---------------------------')
 
         item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
 
-        my_lst = []
         for item in item_list_3:
+            time.sleep(3)
+            self.go_to_element(item)
+            item.click()
             print(item.text)
-            my_lst.append(item)
         print('Prin List 3 --------------------------------')
-        print(my_lst)
 
 
 
-    def click_random_checkbox(self):
-        item_list = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
-        count = 21
-        while count != 0:
-            item = item_list[random.randint(1, 15)]
-            if count > 0:
-                self.go_to_element(item)
-                item.click()
-                time.sleep(0.5)
-                count -= 1
-            else:
-                break
 
 
 test = NoTest1()
@@ -91,18 +80,18 @@ time.sleep(5)
 test.driver.close()
 
 
-def click_random_checkbox(self):
-    item_list = self.elements_are_visible(self.locators.ITEM_LIST)
-    count = 21
-    while count != 0:
-        item = item_list[random.randint(1, 15)]
-        if count > 0:
-            self.go_to_element(item)
-            item.click()
-            # time.sleep(0.5)
-            count -= 1
-        else:
-            break
+# def click_random_checkbox(self):
+#     item_list = self.elements_are_visible(self.locators.ITEM_LIST)
+#     count = 21
+#     while count != 0:
+#         item = item_list[random.randint(1, 15)]
+#         if count > 0:
+#             self.go_to_element(item)
+#             item.click()
+#             # time.sleep(0.5)
+#             count -= 1
+#         else:
+#             break
 
 
 # EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
