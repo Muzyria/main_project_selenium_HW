@@ -53,6 +53,10 @@ class Base():
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
         print(f'price_slider_left move to {value}')
 
+    """ Go to specified element"""
+
+    def go_to_element(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
 
 
