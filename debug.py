@@ -64,7 +64,12 @@ class NoTest1(Base):
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
 
         s = [i.text for i in item_list_3]
-        print(s[0])
+        my_list = list(map(str, s[0].split('\n')))
+
+        for item_3 in my_list:
+            n = ' '.join(str(item_3).split(' ')[:-1])
+            print(n)
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
 
 
         # for item_3 in item_list_3:
