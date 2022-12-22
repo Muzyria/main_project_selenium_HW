@@ -67,7 +67,7 @@ class Base():
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    """Element clickable"""
+    """Element in LIST clickable """
 
     def element_is_clickable(self, item_name):
         return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name}"]')))
