@@ -39,87 +39,67 @@ class NoTest1(Base):
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div'))).click()
 
-        print('Click GPU')
+        print('Click CPU')
 
-        # item_list = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-        #                                                                  '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul')))
+        item_list2 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul')))
         # for item in item_list:
         #
         #     print(item.text)
         # print('Prin List 1')
 
-        item_list_2 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul')))
 
-
-        s = [i.text for i in item_list_2]
-        my_list = list(map(str, s[0].split('\n')))
-
-        for item_2 in my_list:
-            n = ' '.join(str(item_2).split(' ')[:-1])
-            print(n)
-
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
-            try:
-                self.driver.execute_script("arguments[0].scrollIntoView();", element)
-                # actions = ActionChains(self.driver)
-                # actions.move_to_element(element).perform()
-                WebDriverWait(self.driver, 30).until(
-                    EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
-                time.sleep(0.2)
-            except Exception:
-                continue
-
-
-        print('Prin List 2 ---------------------------')
-
-        item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                         '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
-
-        s = [i.text for i in item_list_3]
-        my_list = list(map(str, s[0].split('\n')))
-
-        for item_3 in my_list:
-            n = ' '.join(str(item_3).split(' ')[:-1])
-            print(n)
-
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
-            try:
-                self.driver.execute_script("arguments[0].scrollIntoView();", element)
-            # actions = ActionChains(self.driver)
-            # actions.move_to_element(element).perform()
-                WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
-                time.sleep(0.3)
-            except Exception:
-                continue
+        # item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
+        #                                                                  '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
+        #
+        #
+        #
+        # my_list = list(map(str, [i.text for i in item_list_3][0].split('\n')))
+        #
+        # for item in my_list:
+        #     item_name = ' '.join(str(item).split(' ')[:-1])
+        #     print(item_name)
+        #
+        #     element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
+        #     try:
+        #         # self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        #         self.go_to_element(element)
+        #     # actions = ActionChains(self.driver)
+        #     # actions.move_to_element(element).perform()
+        #     #     WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name} "]'))).click()
+        #         self.element_is_clickable(item_name).click()
+        #         time.sleep(0.3)
+        #     except Exception:
+        #         continue
         print('Prin List 3 --------------------------------')
 
-        item_list_4 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                                                  '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[5]/ul')))
+        ''''-----------------------'''
+    def get_val(self):
+        return WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH, '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
 
-        s = [i.text for i in item_list_4]
-        my_list = list(map(str, s[0].split('\n')))
-
-        for item_4 in my_list:
-            n = ' '.join(str(item_4).split(' ')[:-1])
-            print(n)
-
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
+    def check_box_click_run(self):
+        my_list = list(map(str, [i.text for i in self.get_val()][0].split('\n')))
+        for item in my_list:
+            item_name = ' '.join(str(item).split(' ')[:-1])
+            print(item_name)
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
             try:
-                self.driver.execute_script("arguments[0].scrollIntoView();", element)
-                # actions = ActionChains(self.driver)
-                # actions.move_to_element(element).perform()
-                WebDriverWait(self.driver, 30).until(
-                    EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
+                self.go_to_element(element)
+                self.element_is_clickable(item_name).click()
                 time.sleep(0.3)
             except Exception:
                 continue
-        print('Prin List 4 --------------------------------')
+
+
+
+
+        ''''+++++++++++++++++'''
 
 test = NoTest1()
 test.select_product()
 # test.click_random_checkbox()
 time.sleep(2)
+test.check_box_click_run()
 test.driver.close()
 
 

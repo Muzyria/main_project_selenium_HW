@@ -49,14 +49,28 @@ class Base():
     def slider_left(self, locator):
         action = ActionChains(self.driver)
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
-        value = random.randint(20, 80)
+        value = random.randint(20, 50)
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
         print(f'price_slider_left move to {value}')
 
-    """ Go to specified element"""
+    """Method Slider right to left"""
+
+    def slider_right(self, locator):
+        action = ActionChains(self.driver)
+        slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
+        value = random.randint(-50, 0)
+        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+        print(f'price_slider_right move to {value}')
+
+    """Go to specified element"""
 
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    """Element clickable"""
+
+    def element_is_clickable(self, item_name):
+        return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name} "]')))
 
 
 

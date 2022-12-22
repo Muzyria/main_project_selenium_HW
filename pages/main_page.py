@@ -17,18 +17,34 @@ class Main_page(Base):
 
     # Locators
 
-    select_pc_config = '//a[@id="out-link-5"]'
+    select_link_configurator = '//a[@id="out-link-5"]'
+    select_subscribe_deny = '//div[@id="subscribe-deny"]'
+    select_button_skip_tip = '//b[@class="dg-btn dg-skip"]'
 
     # Getters
 
-    def get_pc_config(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_pc_config)))
+    def get_link_configurator(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_link_configurator)))
+
+    def get_subscribe_deny(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_subscribe_deny)))
+
+    def get_button_skip_tip(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_button_skip_tip)))
 
     # Actions
 
-    def click_cp_config(self):
-        self.get_pc_config().click()
-        print('Click link mobile')
+    def click_link_configurator(self):
+        self.get_link_configurator().click()
+        print('Click link_configurator')
+
+    def click_subscribe_deny(self):
+        self.get_subscribe_deny().click()
+        print('Click subscribe_deny')
+
+    def click_button_skip_tip(self):
+        self.get_button_skip_tip().click()
+        print('Click button_skip_tip')
 
     # Methods
 
@@ -36,7 +52,10 @@ class Main_page(Base):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
-        self.click_cp_config()
+        self.click_link_configurator()
+        self.click_subscribe_deny()
+        self.click_button_skip_tip()
+
 
 
 
