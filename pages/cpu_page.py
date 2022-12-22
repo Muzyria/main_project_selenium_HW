@@ -114,11 +114,11 @@ class CPU_page(Base):
         self.get_price_input_max().send_keys(value)
         print(f'input_price_input_max {value}')
 
-    def check_box_click_run(self, item_list):
+    def check_box_click_run(self, *item_list):
         my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
         for item in my_list:
             item_name = ' '.join(str(item).split(' ')[:-1])
-            print(item_name)
+            print(f'Click {item_name}')
             element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
             try:
                 self.go_to_element(element)
