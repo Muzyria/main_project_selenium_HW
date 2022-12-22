@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
-
+from selenium.webdriver import ActionChains
 
 class CPU_page(Base):
 
@@ -134,18 +134,17 @@ class CPU_page(Base):
     def check_box_click_run(self, *item_list):
         my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
         for item in my_list:
-            # item_name = ' '.join(str(item).split(' ')[:-1])
             item_name = item[:item.index('(')] if '(' in item else item
             print(f'Click {item_name}')
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name}"]')
-            # element = self.element_is_clickable(item_name)
+            # element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name}"]')
+            element = self.element_is_clickable(item_name)
             try:
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
-                time.sleep(0.3)
+                time.sleep(0.5)
                 # self.element_is_clickable(item_name).click()
                 self.click_button_ok()
-                time.sleep(0.4)
+                time.sleep(0.5)
             except Exception:
 
                 continue
@@ -156,11 +155,12 @@ class CPU_page(Base):
     def open_cpu_list(self):
         self.get_current_url()
         self.click_cpu_list()
-        # self.move_price_slider_left()
-        # self.move_price_slider_right()
-        # self.input_price_input_min()
-        # self.input_price_input_max()
-        # self.click_price_button_ok()
+        self.move_price_slider_left()
+        self.move_price_slider_right()
+        self.input_price_input_min()
+        self.input_price_input_max()
+        self.click_price_button_ok()
+        self.click_button_clear_all()
 
         self.check_box_click_run(self.get_item_list_manufacture())
         self.click_button_clear_all()

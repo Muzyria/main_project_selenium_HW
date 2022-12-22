@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ActionChains
 
 
 class Base():
@@ -66,6 +67,11 @@ class Base():
 
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    """Go to specified element ACTIONS"""
+
+    def go_to_element_actions(self, element):
+        ActionChains(self.driver).move_to_element(element).perform()
 
     """Element in LIST clickable """
 
