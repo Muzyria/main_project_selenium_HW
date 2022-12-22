@@ -130,7 +130,6 @@ class CPU_page(Base):
 #                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
 #
 #
-#
 #         s = [i.text for i in item_list_3]
 #         my_list = list(map(str, s[0].split('\n')))
 #
