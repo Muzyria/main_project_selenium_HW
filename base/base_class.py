@@ -76,7 +76,7 @@ class Base():
     """Element in LIST clickable """
 
     def element_is_clickable(self, item_name):
-        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name}"]')))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name}"]')))
 
 
 
