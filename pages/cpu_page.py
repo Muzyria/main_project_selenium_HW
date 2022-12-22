@@ -56,7 +56,7 @@ class CPU_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_button_ok)))
 
     def get_button_ok(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_button_ok)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_button_ok)))
 
     def get_button_clear_all(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_button_clear_all)))
@@ -69,31 +69,31 @@ class CPU_page(Base):
 
     """ Getters LISTS"""
     def get_item_list_manufacture(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_manufacture)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_manufacture)))
     def get_item_list_socket(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_socket)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_socket)))
     def get_item_list_model_range(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_model_range)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_model_range)))
     def get_item_list_intel_generation(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_intel_generation)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_intel_generation)))
     def get_item_list_amd_ryzen_series(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_amd_ryzen_series)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_amd_ryzen_series)))
     def get_item_list_total_number_of_cores(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_total_number_of_cores)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_total_number_of_cores)))
     def get_item_list_number_of_threads(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_number_of_threads)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_number_of_threads)))
     def get_item_list_max_memory_frequency(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_max_memory_frequency)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_max_memory_frequency)))
     def get_item_list_with_integrated_video_core(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_with_integrated_video_core)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_with_integrated_video_core)))
     def get_item_list_free_multiplier(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_free_multiplier)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_free_multiplier)))
     def get_item_list_tech_process(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_tech_process)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_tech_process)))
     def get_item_list_type_of_packaging(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_type_of_packaging)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_type_of_packaging)))
     def get_item_list_with_cooler_included(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_with_cooler_included)))
+        return WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable((By.XPATH, self.select_item_list_with_cooler_included)))
 
     # Actions
 
@@ -141,12 +141,13 @@ class CPU_page(Base):
             try:
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
-                time.sleep(0.5)
+                time.sleep(0.3)
                 # self.element_is_clickable(item_name).click()
                 self.click_button_ok()
-                time.sleep(0.5)
+                time.sleep(0.3)
             except Exception:
-
+                time.sleep(1)
+                self.driver.execute_script("window.scrollTo(0, -250);")  # идем вверх
                 continue
 
 
