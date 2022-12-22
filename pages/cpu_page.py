@@ -145,6 +145,7 @@ class CPU_page(Base):
                 time.sleep(0.3)
                 # self.element_is_clickable(item_name).click()
             except Exception:
+                self.click_button_ok()
                 continue
 
 
