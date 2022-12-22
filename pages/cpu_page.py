@@ -114,6 +114,19 @@ class CPU_page(Base):
         self.get_price_input_max().send_keys(value)
         print(f'input_price_input_max {value}')
 
+    def check_box_click_run(self, item_list):
+        my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
+        for item in my_list:
+            item_name = ' '.join(str(item).split(' ')[:-1])
+            print(item_name)
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
+            try:
+                self.go_to_element(element)
+                self.element_is_clickable(item_name).click()
+                time.sleep(0.3)
+            except Exception:
+                continue
+
     # Methods
 
     def open_cpu_list(self):
@@ -124,6 +137,7 @@ class CPU_page(Base):
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
+        self.check_box_click_run(self.get_item_list_model_range())
 
 
 

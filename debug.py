@@ -56,16 +56,18 @@ class NoTest1(Base):
 
         my_list = list(map(str, [i.text for i in item_list_3][0].split('\n')))
 
-        for item_3 in my_list:
-            n = ' '.join(str(item_3).split(' ')[:-1])
-            print(n)
+        for item in my_list:
+            item_name = ' '.join(str(item).split(' ')[:-1])
+            print(item_name)
 
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
             try:
-                self.driver.execute_script("arguments[0].scrollIntoView();", element)
+                # self.driver.execute_script("arguments[0].scrollIntoView();", element)
+                self.go_to_element(element)
             # actions = ActionChains(self.driver)
             # actions.move_to_element(element).perform()
-                WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
+            #     WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name} "]'))).click()
+                self.element_is_clickable(item_name).click()
                 time.sleep(0.3)
             except Exception:
                 continue

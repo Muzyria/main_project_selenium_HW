@@ -62,10 +62,15 @@ class Base():
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
         print(f'price_slider_right move to {value}')
 
-    """ Go to specified element"""
+    """Go to specified element"""
 
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    """Element clickable"""
+
+    def element_is_clickable(self, item_name):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name} "]')))
 
 
 
