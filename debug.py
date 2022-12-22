@@ -80,13 +80,15 @@ class NoTest1(Base):
     def check_box_click_run(self):
         my_list = list(map(str, [i.text for i in self.get_val()][0].split('\n')))
         for item in my_list:
-            item_name = ' '.join(str(item).split(' ')[:-1])
+            print(item)
+            # item_name = ' '.join(str(item).split(' ')[:-1])
+            item_name = item[:item.index('(')] if '(' in item else item
             print(item_name)
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name}"]')
             try:
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
-                time.sleep(0.3)
+                time.sleep(0.5)
             except Exception:
                 continue
 

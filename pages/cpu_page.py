@@ -126,7 +126,8 @@ class CPU_page(Base):
     def check_box_click_run(self, *item_list):
         my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
         for item in my_list:
-            item_name = ' '.join(str(item).split(' ')[:-1])
+            # item_name = ' '.join(str(item).split(' ')[:-1])
+            item_name = item[:item.index('(')] if '(' in item else item
             print(f'Click {item_name}')
             # element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
             element = self.element_is_clickable(item_name)
