@@ -38,7 +38,6 @@ class CPU_page(Base):
     select_item_list_type_of_packaging = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[13]/ul'
     select_item_list_with_cooler_included = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[14]/ul'
 
-
     # Getters
 
     def get_cpu_list(self):
@@ -47,7 +46,7 @@ class CPU_page(Base):
     def get_price_slider_left(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_slider_left)))
 
-    def get_price_slideright(self):
+    def get_price_slide_right(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_slider_right)))
 
     def get_price_button_ok(self):
@@ -93,7 +92,7 @@ class CPU_page(Base):
         self.get_current_url()
         self.click_cpu_list()
         self.move_price_slider_left()
-        # self.move_price_slider_right()
+        self.move_price_slider_right()
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
