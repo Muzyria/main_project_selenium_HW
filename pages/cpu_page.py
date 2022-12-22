@@ -151,8 +151,10 @@ class CPU_page(Base):
         self.click_price_button_ok()
 
         self.check_box_click_run(self.get_item_list_manufacture())
+        self.get_item_list_manufacture().click()
 
         self.check_box_click_run(self.get_item_list_socket())
+        self.get_item_list_socket().click()
 
         self.check_box_click_run(self.get_item_list_model_range())
 
