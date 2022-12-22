@@ -18,11 +18,11 @@ def test_by_main_page():
     mp = Main_page(driver)
     mp.open_main_page()
 
-    mc = Mobile_connection_page(driver)
-    mc.open_cell_phones()
-
-    cp = Cell_phones_page(driver)
-    cp.open_cell_phones()
+    # mc = Mobile_connection_page(driver)
+    # mc.open_cell_phones()
+    #
+    # cp = Cell_phones_page(driver)
+    # cp.open_cell_phones()
 
     time.sleep(5)
     driver.quit()
