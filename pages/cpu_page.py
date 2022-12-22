@@ -24,10 +24,12 @@ class CPU_page(Base):
     select_price_input_max = '//input[@id="f-price-h"]'
     select_price_button_ok = '//*[@id="price-diap"]/div[3]/button'
 
+    select_button_ok = '//button[@class="bluebtn"]'
+
     select_item_list_manufacture = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul'
     select_item_list_socket = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul'
     select_item_list_model_range = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul'
-    select_item_list_intel_generation = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul'
+    select_item_list_intel_generation = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[5]/ul'
     select_item_list_amd_ryzen_series = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[6]/ul'
     select_item_list_total_number_of_cores = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[7]/ul'
     select_item_list_number_of_threads = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[8]/ul'
@@ -51,6 +53,9 @@ class CPU_page(Base):
 
     def get_price_button_ok(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_button_ok)))
+
+    def get_button_ok(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_button_ok)))
 
     def get_price_input_min(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_min)))
@@ -102,6 +107,10 @@ class CPU_page(Base):
         self.get_price_button_ok().click()
         print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по цене
 
+    def click_button_ok(self):
+        self.get_button_ok().click()
+        print('click_price_button_ok')  # Кнопка OK
+
     def input_price_input_min(self):
         value = random.randint(400, 5000)
         self.get_price_input_min().clear()
@@ -119,13 +128,16 @@ class CPU_page(Base):
         for item in my_list:
             item_name = ' '.join(str(item).split(' ')[:-1])
             print(f'Click {item_name}')
-            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
+            # element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
+            element = self.element_is_clickable(item_name)
             try:
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
                 time.sleep(0.3)
+                self.element_is_clickable(item_name).click()
             except Exception:
                 continue
+
 
     # Methods
 
@@ -137,29 +149,14 @@ class CPU_page(Base):
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
+
+        self.check_box_click_run(self.get_item_list_manufacture())
+
+        self.check_box_click_run(self.get_item_list_socket())
+
         self.check_box_click_run(self.get_item_list_model_range())
 
+        self.check_box_click_run(self.get_item_list_intel_generation())
 
+        self.check_box_click_run(self.get_item_list_amd_ryzen_series())
 
-
-# item_list_3 = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-#                                                                          '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[4]/ul')))
-#
-#
-#         s = [i.text for i in item_list_3]
-#         my_list = list(map(str, s[0].split('\n')))
-#
-#         for item_3 in my_list:
-#             n = ' '.join(str(item_3).split(' ')[:-1])
-#             print(n)
-#
-#             element = self.driver.find_element(By.XPATH, f'//*[text()="{n} "]')
-#             try:
-#                 self.driver.execute_script("arguments[0].scrollIntoView();", element)
-#             # actions = ActionChains(self.driver)
-#             # actions.move_to_element(element).perform()
-#                 WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{n} "]'))).click()
-#                 time.sleep(0.3)
-#             except Exception:
-#                 continue
-#         print('Prin List 3 --------------------------------')
