@@ -53,6 +53,15 @@ class Base():
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
         print(f'price_slider_left move to {value}')
 
+    """Method Slider right to left"""
+
+    def slider_right(self, locator):
+        action = ActionChains(self.driver)
+        slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
+        value = random.randint(20, 80)
+        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+        print(f'price_slider_right move to {value}')
+
     """ Go to specified element"""
 
     def go_to_element(self, element):
