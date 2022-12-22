@@ -25,6 +25,7 @@ class CPU_page(Base):
     select_price_button_ok = '//*[@id="price-diap"]/div[3]/button'
 
     select_button_ok = '//button[@class="bluebtn"]'
+    select_button_clear_all = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/div/button[1]'
 
     select_item_list_manufacture = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul'
     select_item_list_socket = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul'
@@ -56,6 +57,9 @@ class CPU_page(Base):
 
     def get_button_ok(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_button_ok)))
+
+    def get_button_clear_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_button_clear_all)))
 
     def get_price_input_min(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_min)))
@@ -111,6 +115,10 @@ class CPU_page(Base):
         self.get_button_ok().click()
         print('click_price_button_ok')  # Кнопка OK
 
+    def click_button_clear_all(self):
+        self.get_button_clear_all().click()
+        print('click_price_button_ok')  # Кнопка ОЧИСТИТЬ ВСЕ
+
     def input_price_input_min(self):
         value = random.randint(400, 5000)
         self.get_price_input_min().clear()
@@ -129,8 +137,8 @@ class CPU_page(Base):
             # item_name = ' '.join(str(item).split(' ')[:-1])
             item_name = item[:item.index('(')] if '(' in item else item
             print(f'Click {item_name}')
-            # element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name} "]')
-            element = self.element_is_clickable(item_name)
+            element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name}"]')
+            # element = self.element_is_clickable(item_name)
             try:
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
@@ -145,21 +153,27 @@ class CPU_page(Base):
     def open_cpu_list(self):
         self.get_current_url()
         self.click_cpu_list()
-        self.move_price_slider_left()
-        self.move_price_slider_right()
-        self.input_price_input_min()
-        self.input_price_input_max()
-        self.click_price_button_ok()
+        # self.move_price_slider_left()
+        # self.move_price_slider_right()
+        # self.input_price_input_min()
+        # self.input_price_input_max()
+        # self.click_price_button_ok()
 
         self.check_box_click_run(self.get_item_list_manufacture())
-        # self.get_item_list_manufacture().click()
+        self.click_button_clear_all()
+        time.sleep(1)
 
         self.check_box_click_run(self.get_item_list_socket())
-        # self.get_item_list_socket().click()
+        self.click_button_clear_all()
+        time.sleep(1)
 
         self.check_box_click_run(self.get_item_list_model_range())
+        self.click_button_clear_all()
+        time.sleep(1)
 
         self.check_box_click_run(self.get_item_list_intel_generation())
+        self.click_button_clear_all()
+        time.sleep(1)
 
         self.check_box_click_run(self.get_item_list_amd_ryzen_series())
-
+        self.click_button_clear_all()
