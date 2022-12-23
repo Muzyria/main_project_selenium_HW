@@ -37,4 +37,9 @@ class Main_page_DNS(Base):
         self.driver.maximize_window()
         self.get_current_url()
         # self.click_link_smartphones()
+        time.sleep(1)
         self.driver.execute_script("window.scrollTo(0, 250);")  # идем вверх
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0, 550);")  # идем вверх
+        time.sleep(1)
+        self.driver.execute_script("window.scrollTo(0, 850);")  # идем вверх
