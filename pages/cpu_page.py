@@ -195,7 +195,7 @@ class CPU_page(Base):
         self.check_box_click_run(self.get_item_list_model_range())
         self.click_button_clear_all()
         time.sleep(1)
-        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)
+        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)  # Прокручиваем список
 
         self.check_box_click_run(self.get_item_list_intel_generation())
         self.click_button_clear_all()
@@ -203,3 +203,36 @@ class CPU_page(Base):
 
         self.check_box_click_run(self.get_item_list_amd_ryzen_series())
         self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_total_number_of_cores())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_number_of_threads())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_max_memory_frequency())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_with_integrated_video_core())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_free_multiplier())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_tech_process())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_type_of_packaging())
+        self.click_button_clear_all()
+        time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_with_cooler_included())
+        self.click_button_clear_all()
+        time.sleep(1)
