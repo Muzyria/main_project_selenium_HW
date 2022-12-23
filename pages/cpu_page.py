@@ -219,6 +219,8 @@ class CPU_page(Base):
         self.click_button_clear_all()
         time.sleep(1)
 
+        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)  # 4 Прокручиваем список
+
         # self.check_box_click_run(self.get_item_list_with_integrated_video_core()) # 10
         # self.click_button_clear_all()
         # time.sleep(1)
