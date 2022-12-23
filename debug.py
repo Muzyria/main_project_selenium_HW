@@ -90,7 +90,7 @@ class NoTest1(Base):
                 self.element_is_clickable(item_name).click()
                 time.sleep(0.5)
             except Exception:
-                continue
+                self.driver.execute_script("window.scrollTo(0, 250);")  # идем вверх
 
 
 

@@ -147,7 +147,7 @@ class CPU_page(Base):
                 time.sleep(0.3)
             except Exception:
                 time.sleep(1)
-                self.driver.execute_script("window.scrollTo(0, -250);")  # идем вверх
+                self.driver.execute_script("window.scrollTo(0, 250);")  # идем вверх
                 time.sleep(1)
                 # continue
 
