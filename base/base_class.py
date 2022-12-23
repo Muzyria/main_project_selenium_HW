@@ -67,6 +67,7 @@ class Base():
 
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        # self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollTop + 50", element)
 
     """Go to specified element ACTIONS"""
 

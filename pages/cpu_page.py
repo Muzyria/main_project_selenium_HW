@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
+from selenium.webdriver import Keys
 from selenium.webdriver import ActionChains
 
 class CPU_page(Base):
@@ -26,6 +27,8 @@ class CPU_page(Base):
 
     select_button_ok = '//button[@class="bluebtn"]'
     select_button_clear_all = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/div/button[1]'
+
+    select_form_check_box = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/div/button[1]'
 
     select_item_list_manufacture = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[2]/ul'
     select_item_list_socket = '//*[@id="cnf-content"]/div/div/div[4]/div[2]/div[1]/div[2]/aside/form/div[3]/ul'
@@ -66,6 +69,9 @@ class CPU_page(Base):
 
     def get_price_input_max(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_max)))
+
+    def get_form_check_box(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_form_check_box)))
 
     """ Getters LISTS"""
     def get_item_list_manufacture(self):
@@ -139,17 +145,26 @@ class CPU_page(Base):
             # element = self.driver.find_element(By.XPATH, f'//*[text()="{item_name}"]')
             element = self.element_is_clickable(item_name)
             try:
+                # self.driver.element.send_keys(Keys.ARROW_DOWN)
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
                 time.sleep(0.3)
                 # self.element_is_clickable(item_name).click()
-                self.click_button_ok()
-                time.sleep(0.3)
+                # self.click_button_ok()
+                # time.sleep(0.3)
             except Exception:
-                time.sleep(1)
-                self.driver.execute_script("window.scrollTo(0, 250);")  # идем вверх
-                time.sleep(1)
-                # continue
+                # time.sleep(1)
+                # self.driver.execute_script("window.scrollTo(0, 1250);")  # идем вверх
+                # self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollTop + 250", element)
+                # time.sleep(1)
+                # self.go_to_element(element)
+                # self.element_is_clickable(item_name).click()
+                # time.sleep(0.3)
+                # self.get_form_check_box().send_keys(Keys.PAGE_DOWN)
+                # self.go_to_element(element)
+                # self.element_is_clickable(item_name).click()
+                # time.sleep(0.3)
+                continue
 
 
 
@@ -176,6 +191,7 @@ class CPU_page(Base):
         self.check_box_click_run(self.get_item_list_model_range())
         self.click_button_clear_all()
         time.sleep(1)
+        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)
 
         self.check_box_click_run(self.get_item_list_intel_generation())
         self.click_button_clear_all()
