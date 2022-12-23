@@ -164,6 +164,10 @@ class CPU_page(Base):
                 # self.go_to_element(element)
                 # self.element_is_clickable(item_name).click()
                 # time.sleep(0.3)
+                self.click_button_ok()
+                self.go_to_element(element)
+                self.element_is_clickable(item_name).click()
+                time.sleep(0.3)
                 continue
 
 
