@@ -148,7 +148,7 @@ class CPU_page(Base):
                 # self.driver.element.send_keys(Keys.ARROW_DOWN)
                 self.go_to_element(element)
                 self.element_is_clickable(item_name).click()
-                time.sleep(0.3)
+                time.sleep(0.1)
                 # self.element_is_clickable(item_name).click()
                 # self.click_button_ok()
                 # time.sleep(0.3)
@@ -184,55 +184,57 @@ class CPU_page(Base):
         self.click_price_button_ok()
         self.click_button_clear_all()
 
-        self.check_box_click_run(self.get_item_list_manufacture())
+        self.check_box_click_run(self.get_item_list_manufacture()) # 1
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_socket())
+        self.check_box_click_run(self.get_item_list_socket()) # 2
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_model_range())
+        self.check_box_click_run(self.get_item_list_model_range()) # 3
         self.click_button_clear_all()
         time.sleep(1)
-        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)  # Прокручиваем список
+        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)  # 4 Прокручиваем список
 
-        self.check_box_click_run(self.get_item_list_intel_generation())
-        self.click_button_clear_all()
-        time.sleep(1)
-
-        self.check_box_click_run(self.get_item_list_amd_ryzen_series())
+        self.check_box_click_run(self.get_item_list_intel_generation()) # 5
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_total_number_of_cores())
+        self.check_box_click_run(self.get_item_list_amd_ryzen_series()) # 6
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_number_of_threads())
+        # self.check_box_click_run(self.get_item_list_total_number_of_cores()) # 7
+        # self.click_button_clear_all()
+        # time.sleep(1)
+        #
+        # self.check_box_click_run(self.get_item_list_number_of_threads()) # 8
+        # self.click_button_clear_all()
+        # time.sleep(1)
+
+        self.get_form_check_box().send_keys(Keys.PAGE_DOWN)  # 4 Прокручиваем список
+
+        self.check_box_click_run(self.get_item_list_max_memory_frequency()) # 9
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_max_memory_frequency())
+        # self.check_box_click_run(self.get_item_list_with_integrated_video_core()) # 10
+        # self.click_button_clear_all()
+        # time.sleep(1)
+        #
+        # self.check_box_click_run(self.get_item_list_free_multiplier()) # 11
+        # self.click_button_clear_all()
+        # time.sleep(1)
+
+        self.check_box_click_run(self.get_item_list_tech_process()) # 12
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_with_integrated_video_core())
+        self.check_box_click_run(self.get_item_list_type_of_packaging()) # 13
         self.click_button_clear_all()
         time.sleep(1)
 
-        self.check_box_click_run(self.get_item_list_free_multiplier())
-        self.click_button_clear_all()
-        time.sleep(1)
-
-        self.check_box_click_run(self.get_item_list_tech_process())
-        self.click_button_clear_all()
-        time.sleep(1)
-
-        self.check_box_click_run(self.get_item_list_type_of_packaging())
-        self.click_button_clear_all()
-        time.sleep(1)
-
-        self.check_box_click_run(self.get_item_list_with_cooler_included())
+        self.check_box_click_run(self.get_item_list_with_cooler_included()) # 14
         self.click_button_clear_all()
         time.sleep(1)
