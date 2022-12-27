@@ -19,7 +19,7 @@ class NoTest1(Base):
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         # self.base_url = 'https://demoqa.com/checkbox'
         # self.base_url = 'https://elmir.ua/configurator/'
-        self.base_url = 'https://www.dns-shop.ru/catalog/17a8a01d16404e77/smartfony/'
+        self.base_url = 'https://www.flagman.kiev.ua/spinningovie-udilischa/c201224/'
         self.driver.get(self.base_url)
         self.driver.maximize_window()
 
@@ -29,11 +29,11 @@ class NoTest1(Base):
 
 
 
-        element = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located((By.XPATH,
-                                                                         '/html/body/div[2]/div/div[2]/div[1]/div/div[3]/div[1]/div[6]/div/div/div[2]')))
+        element = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH,
+                                                                         '//*[@id="sort_detail_10908"]/li[1]/label/span[1]')))
 
         ActionChains(self.driver).move_to_element(element).perform()
-
+        element.click()
         # for item in item_list:
         #
         #     print(item.text)
