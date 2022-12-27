@@ -79,4 +79,8 @@ class Base():
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[text()="{item_name}"]')))
 
 
+    """ITEM text to LIST"""  #  возвращает список из названий чекбоксов
 
+    def item_to_list(self, item_list):
+        my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
+        return my_list

@@ -1,5 +1,5 @@
 import time
-
+import random
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -34,10 +34,21 @@ class Spinning_page(Base):
         self.get_producer_show_all().click()
         print('Click manufacturer_show_all')
 
-    def print_producer_list_all(self):
-        for item in self.get_producer_list_all():
-            print(item.text)
+    def print_producer_list_all(self, val):
+        print(self.item_to_list(val))
+        # for item in self.get_producer_list_all():
+            # item_name = item.text[:item.text.index('(')] if '(' in item.text else item.text
+            # print(item_name)
         print('Print producer_list_all')
+
+    def check_box_click_run(self, *item_list):
+        my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
+        count = 5
+        # for item in my_list:
+        for _ in range(5):
+            item = my_list[random.randint(0, len(my_list) - 1)]
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(f'Click {item_name}')
 
 
 
@@ -46,7 +57,8 @@ class Spinning_page(Base):
     def run_configurator_list_spinning(self):
         self.get_current_url()
         self.click_producer_show_all()
-        self.print_producer_list_all()
+        self.print_producer_list_all(self.get_producer_list_all())
+        # self.check_box_click_run(self.get_producer_list_all())
 
 
 
