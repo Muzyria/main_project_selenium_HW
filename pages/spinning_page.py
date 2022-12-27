@@ -36,9 +36,9 @@ class Spinning_page(Base):
 
     def print_producer_list_all(self, val):
         print(self.item_to_list(val))
-        # for item in self.get_producer_list_all():
-            # item_name = item.text[:item.text.index('(')] if '(' in item.text else item.text
-            # print(item_name)
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
         print('Print producer_list_all')
 
     def check_box_click_run(self, *item_list):
