@@ -4,7 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-from pages.cpu_page import CPU_page
 from pages.main_page_flagman import Main_page_flagman
 
 
