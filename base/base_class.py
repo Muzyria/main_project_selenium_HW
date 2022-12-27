@@ -84,3 +84,5 @@ class Base():
     def item_to_list(self, item_list):
         my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
         return my_list
+
+
