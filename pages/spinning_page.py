@@ -15,24 +15,38 @@ class Spinning_page(Base):
 
     # Locators
 
-    select_manufacturer_show_all = '//span[text()="Показать еще..."]'
+    select_producer_show_all = '//span[text()="Показать еще..."]'
+    select_producer_list_all = '//ul[@id="sort_producer"]'
 
     # Getters
 
-    def get_manufacturer_show_all(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_manufacturer_show_all)))
+    def get_producer_show_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_producer_show_all)))
+
+    def get_producer_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_producer_list_all)))
+
+
 
     # Actions
 
-    def click_manufacturer_show_all(self):
-        self.get_manufacturer_show_all().click()
+    def click_producer_show_all(self):
+        self.get_producer_show_all().click()
         print('Click manufacturer_show_all')
+
+    def print_producer_list_all(self):
+        for item in self.get_producer_list_all():
+            print(item.text)
+        print('Print producer_list_all')
+
+
 
     # Methods
 
     def run_configurator_list_spinning(self):
         self.get_current_url()
-        self.click_manufacturer_show_all()
+        self.click_producer_show_all()
+        self.print_producer_list_all()
 
 
 
