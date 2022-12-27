@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 from pages.main_page_flagman import Main_page_flagman
+from pages.spinning_page import Spinning_page
 
 
 # @pytest.mark.run(order=1)
@@ -16,8 +17,8 @@ def test_by_main_page():
     mp = Main_page_flagman(driver)
     mp.open_main_page()
 
-    # cpu = CPU_page(driver)
-    # cpu.open_cpu_list()
+    spin = Spinning_page(driver)
+    spin.run_configurator_list_spinning()
 
     time.sleep(5)
     driver.quit()

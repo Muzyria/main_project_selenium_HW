@@ -52,6 +52,7 @@ class Main_page_flagman(Base):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
+
         self.click_link_spinning()
         self.click_link_spinning_2()
         self.click_link_lang_switch_ru()
