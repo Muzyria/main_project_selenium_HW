@@ -33,11 +33,11 @@ class Spinning_page(Base):
     select_sort_items = '/html/body/div[11]/div[2]/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/select'
 
     select_length_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
-    select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
+    select_length_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
 
-    select_price_input_min = '//input[@id="price[min]"]'
-    select_price_input_max = '//input[@id="price[max]"]'
-    select_price_button_ok = '//button[@id="submitprice"]'
+    select_length_input_min = '//input[@id="10625[min]"]'
+    select_length_input_max = '//input[@id="10625[max]"]'
+    select_length_button_ok = '//button[@id="submit10625"]'
 
     # Getters
 
@@ -53,7 +53,7 @@ class Spinning_page(Base):
     def get_filter_reset(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_filter_reset)))
 
-    # PRICE
+    # Getter PRICE
     def get_price_slider_left(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_slider_left)))
 
@@ -68,6 +68,22 @@ class Spinning_page(Base):
 
     def get_price_input_max(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_max)))
+
+    # Getter LENGTH
+    def get_length_slider_left(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_length_slider_left)))
+
+    def get_length_slide_right(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_length_slider_right)))
+
+    def get_length_button_ok(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_length_button_ok)))
+
+    def get_length_input_min(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_length_input_min)))
+
+    def get_length_input_max(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_length_input_max)))
 
     # SORT
     def get_sort_items(self):
@@ -151,7 +167,44 @@ class Spinning_page(Base):
         # time.sleep(3)
         print(f'input_price_input_max {value}')
 
-    def click_sort_items(self): # сортировка по цене от дешевых
+    """LENGTH SLIDER"""
+    def move_length_slider_left(self):
+        self.slider_left(self.select_length_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
+
+    def move_length_slider_right(self):
+        self.slider_right(self.select_length_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
+
+    def click_length_button_ok(self):
+        self.get_length_button_ok().click()
+        print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
+
+    def input_length_input_min(self):
+        value = random.randint(1, 90)
+        self.go_to_element_actions(self.get_length_input_min())
+        current_min_val = self.get_length_input_min().get_attribute('value')
+        time.sleep(1)
+        self.get_length_input_min().send_keys(Keys.ARROW_DOWN)
+        for _ in range(8):
+            self.get_length_input_min().send_keys(Keys.BACKSPACE)
+        self.get_length_input_min().send_keys(value)
+        # time.sleep(3)
+        print(f'input_length_input_min {value}')
+
+    def input_length_input_max(self):
+        value = random.randint(100, 230)
+        self.get_length_input_max().clear()
+        self.go_to_element_actions(self.get_length_input_max())
+        current_max_val = self.get_length_input_min().get_attribute('value')
+        time.sleep(1)
+        self.get_length_input_max().send_keys(Keys.ARROW_DOWN)
+        for _ in range(8):
+            self.get_length_input_max().send_keys(Keys.BACKSPACE)
+        self.get_length_input_max().send_keys(value)
+        # time.sleep(3)
+        print(f'input_price_input_max {value}')
+
+
+    def click_sort_items(self):  # сортировка по цене от дешевых
         self.go_to_element_actions(self.get_sort_items())
         self.get_sort_items().click()
         print('Click sort items')
@@ -182,7 +235,11 @@ class Spinning_page(Base):
         #
         # self.click_sort_items()
 
-        self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
+        # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
+
+        self.move_length_slider_left()
+        self.move_length_slider_right()
+        self.click_length_button_ok()
 
         time.sleep(5)
 
