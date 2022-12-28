@@ -1,6 +1,7 @@
 import time
 import random
 
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -93,15 +94,26 @@ class Spinning_page(Base):
         print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по цене
 
     def input_price_input_min(self):
-        value = random.randint(200, 1000)
-        self.get_price_input_min().clear()
+        value = random.randint(200, 9000)
+        self.go_to_element_actions(self.get_price_input_min())
+        time.sleep(1)
+        self.get_price_input_min().send_keys(Keys.ARROW_DOWN)
+        for _ in range(8):
+            self.get_price_input_min().send_keys(Keys.BACKSPACE)
         self.get_price_input_min().send_keys(value)
+        # time.sleep(3)
         print(f'input_price_input_min {value}')
 
     def input_price_input_max(self):
         value = random.randint(10000, 28000)
         self.get_price_input_max().clear()
+        self.go_to_element_actions(self.get_price_input_max())
+        time.sleep(1)
+        self.get_price_input_max().send_keys(Keys.ARROW_DOWN)
+        for _ in range(8):
+            self.get_price_input_max().send_keys(Keys.BACKSPACE)
         self.get_price_input_max().send_keys(value)
+        # time.sleep(3)
         print(f'input_price_input_max {value}')
 
     # Methods
@@ -109,20 +121,22 @@ class Spinning_page(Base):
     def run_configurator_list_spinning(self):
         self.get_current_url()
         self.click_producer_show_all()
-        self.print_producer_list_all(self.get_producer_list_all())
+        # self.print_producer_list_all(self.get_producer_list_all())
 
-        self.click_producer_random_item(self.get_producer_list_all())
+        # self.click_producer_random_item(self.get_producer_list_all())
 
-        self.click_filter_reset()
+        # self.click_filter_reset()
 
-        self.move_price_slider_left()
-        self.move_price_slider_right()
-        self.click_price_button_ok()
-        # self.input_price_input_min()
-        # self.input_price_input_max()
+
+        # self.move_price_slider_left()
+        # self.move_price_slider_right()
         # self.click_price_button_ok()
 
-        time.sleep(3)
+        self.input_price_input_min()
+        self.input_price_input_max()
+        self.click_price_button_ok()
+
+        time.sleep(5)
 
 
 
