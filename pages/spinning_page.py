@@ -46,12 +46,12 @@ class Spinning_page(Base):
     select_minimum_test_input_max = '//input[@id="10643[max]"]'
     select_minimum_test_button_ok = '//button[@id="submit10643"]'
 
-    select_maximum_test_slider_left = '//*[@id="trackbar10625"]/a[1]/div/div'
-    select_maximum_test_slider_right = '//*[@id="trackbar10625"]/a[3]/div/div'
+    select_maximum_test_slider_left = '//*[@id="trackbar10644"]/a[1]/div/div'
+    select_maximum_test_slider_right = '//*[@id="trackbar10644"]/a[3]/div/div'
 
-    select_maximum_test_input_min = '//input[@id="10625[min]"]'
-    select_maximum_test_input_max = '//input[@id="10625[max]"]'
-    select_maximum_test_button_ok = '//button[@id="submit10625"]'
+    select_maximum_test_input_min = '//input[@id="10644[min]"]'
+    select_maximum_test_input_max = '//input[@id="10644[max]"]'
+    select_maximum_test_button_ok = '//button[@id="submit10644"]'
 
     # Getters
 
