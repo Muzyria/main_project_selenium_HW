@@ -18,6 +18,8 @@ class Spinning_page(Base):
     select_producer_show_all = '//span[text()="Показать еще..."]'
     select_producer_list_all = '//ul[@id="sort_producer"]'
 
+    select_filter_reset = '//a[@class="filter-resetHead"]'
+
     # Getters
 
     def get_producer_show_all(self):
@@ -26,8 +28,8 @@ class Spinning_page(Base):
     def get_producer_list_all(self):
         return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_producer_list_all)))
 
-
-
+    def get_filter_reset(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_filter_reset)))
 
     # Actions
 
@@ -51,8 +53,9 @@ class Spinning_page(Base):
         print(f'Click {name_item}')
         time.sleep(3)
 
-
-
+    def click_filter_reset(self):
+        self.get_filter_reset().click()
+        print('Click filter RESET')
 
     # Methods
 
@@ -60,11 +63,10 @@ class Spinning_page(Base):
         self.get_current_url()
         self.click_producer_show_all()
         self.print_producer_list_all(self.get_producer_list_all())
-        # self.check_box_click_run(self.get_producer_list_all())
-        # for i in range(1, 34):
-        #     self.go_to_element_actions(self.driver.find_element(By.XPATH, f'//*[@id="sort_producer"]/li[{i}]'))
-        #     time.sleep(0.5)
+
         self.click_producer_random_item(self.get_producer_list_all())
+
+        self.click_filter_reset()
         time.sleep(3)
 
 
