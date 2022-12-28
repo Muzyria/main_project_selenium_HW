@@ -19,6 +19,8 @@ class Spinning_page(Base):
     select_producer_show_all = '//span[text()="Показать еще..."]'
     select_producer_list_all = '//ul[@id="sort_producer"]'
 
+    select_type_of_rod_list_all = '//*[@id="sort_detail_10908"]'
+
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
     select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
@@ -29,7 +31,7 @@ class Spinning_page(Base):
     select_price_button_ok = '//button[@id="submitprice"]'
 
     select_sort_items = '/html/body/div[11]/div[2]/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/select'
-    select_sort_items_ot_deshevih = '/html/body/div[11]/div[2]/div/div[2]/div[1]/div[1]/div/div/div[2]/select/option[1]'
+
 
 
     # Getters
@@ -39,6 +41,9 @@ class Spinning_page(Base):
 
     def get_producer_list_all(self):
         return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_producer_list_all)))
+
+    def get_type_of_rod_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_type_of_rod_list_all)))
 
     def get_filter_reset(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_filter_reset)))
@@ -63,8 +68,6 @@ class Spinning_page(Base):
     def get_sort_items(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_sort_items)))
 
-    def get_sort_items_ot_deshevih(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_sort_items_ot_deshevih)))
 
     # Actions
 
@@ -78,6 +81,13 @@ class Spinning_page(Base):
             item_name = item[:item.index('(')] if '(' in item else item
             print(item_name)
         print('Print producer_list_all')
+
+    def print_type_of_rod_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print type_of_rod_list_all')
 
     def click_producer_random_item(self, val):
         check_box_list = self.item_to_list(val)
@@ -152,12 +162,13 @@ class Spinning_page(Base):
         # self.move_price_slider_right()
         # self.click_price_button_ok()
 
-        self.input_price_input_min()
-        self.input_price_input_max()
-        self.click_price_button_ok()
+        # self.input_price_input_min()
+        # self.input_price_input_max()
+        # self.click_price_button_ok()
+        #
+        # self.click_sort_items()
 
-        self.click_sort_items()
-
+        # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
         time.sleep(5)
 
