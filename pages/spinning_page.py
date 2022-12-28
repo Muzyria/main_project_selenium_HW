@@ -132,6 +132,7 @@ class Spinning_page(Base):
         self.get_filter_reset().click()
         print('Click filter RESET')
 
+    """PRICE SLIDER"""
     def move_price_slider_left(self):
         self.slider_left(self.select_price_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
 
@@ -201,7 +202,7 @@ class Spinning_page(Base):
             self.get_length_input_max().send_keys(Keys.BACKSPACE)
         self.get_length_input_max().send_keys(value)
         # time.sleep(3)
-        print(f'input_price_input_max {value}')
+        print(f'input_length_input_max {value}')
 
 
     def click_sort_items(self):  # сортировка по цене от дешевых
