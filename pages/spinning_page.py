@@ -116,7 +116,11 @@ class Spinning_page(Base):
         self.click_filter_reset()
 
         self.move_price_slider_left()
-
+        self.move_price_slider_right()
+        self.click_price_button_ok()
+        # self.input_price_input_min()
+        # self.input_price_input_max()
+        # self.click_price_button_ok()
 
         time.sleep(3)
 
