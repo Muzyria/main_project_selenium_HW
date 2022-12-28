@@ -28,7 +28,9 @@ class Spinning_page(Base):
     select_price_input_max = '//input[@id="price[max]"]'
     select_price_button_ok = '//button[@id="submitprice"]'
 
-    # select_button_ok = '//button[@class="bluebtn"]'
+    select_sort_items = '/html/body/div[11]/div[2]/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/select'
+    select_sort_items_ot_deshevih = '/html/body/div[11]/div[2]/div/div[2]/div[1]/div[1]/div/div/div[2]/select/option[1]'
+
 
     # Getters
 
@@ -56,6 +58,13 @@ class Spinning_page(Base):
 
     def get_price_input_max(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_max)))
+
+    # SORT
+    def get_sort_items(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_sort_items)))
+
+    def get_sort_items_ot_deshevih(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_sort_items_ot_deshevih)))
 
     # Actions
 
@@ -96,6 +105,7 @@ class Spinning_page(Base):
     def input_price_input_min(self):
         value = random.randint(200, 9000)
         self.go_to_element_actions(self.get_price_input_min())
+        current_min_val = self.get_price_input_min().get_attribute('value')
         time.sleep(1)
         self.get_price_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -108,6 +118,7 @@ class Spinning_page(Base):
         value = random.randint(10000, 28000)
         self.get_price_input_max().clear()
         self.go_to_element_actions(self.get_price_input_max())
+        current_max_val = self.get_price_input_min().get_attribute('value')
         time.sleep(1)
         self.get_price_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -115,6 +126,15 @@ class Spinning_page(Base):
         self.get_price_input_max().send_keys(value)
         # time.sleep(3)
         print(f'input_price_input_max {value}')
+
+    def click_sort_items(self): # сортировка по цене от дешевых
+        self.go_to_element_actions(self.get_sort_items())
+        self.get_sort_items().click()
+        print('Click sort items')
+        [self.get_sort_items().send_keys(Keys.ARROW_UP) for _ in range(5)]
+        self.get_sort_items().send_keys(Keys.RETURN)
+        print('Click sort items по цене (от дешевых)')
+        time.sleep(3)
 
     # Methods
 
@@ -135,6 +155,9 @@ class Spinning_page(Base):
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
+
+        self.click_sort_items()
+
 
         time.sleep(5)
 
