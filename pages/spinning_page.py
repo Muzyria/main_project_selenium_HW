@@ -99,6 +99,43 @@ class Spinning_page(Base):
     def get_length_input_max(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_length_input_max)))
 
+    # Getter minimum_test
+    def get_minimum_tes_t_slider_left(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_minimum_test_slider_left)))
+
+    def get_minimum_tes_t_slide_right(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_minimum_test_slider_right)))
+
+    def get_minimum_tes_t_button_ok(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_minimum_test_button_ok)))
+
+    def get_minimum_tes_t_input_min(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_minimum_test_input_min)))
+
+    def get_minimum_tes_t_input_max(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_minimum_test_input_max)))
+
+    # Getter maximum_test
+    def get_maximum_tes_t_slider_left(self):
+        return WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, self.select_maximum_test_slider_left)))
+
+    def get_maximum_tes_t_slide_right(self):
+        return WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, self.select_maximum_test_slider_right)))
+
+    def get_maximum_tes_t_button_ok(self):
+        return WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, self.select_maximum_test_button_ok)))
+
+    def get_maximum_tes_t_input_min(self):
+        return WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, self.select_maximum_test_input_min)))
+
+    def get_maximum_tes_t_input_max(self):
+        return WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, self.select_maximum_test_input_max)))
+
     # SORT
     def get_sort_items(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_sort_items)))
