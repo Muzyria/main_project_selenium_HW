@@ -20,6 +20,15 @@ class Spinning_page(Base):
 
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
+    select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
+    select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
+
+    select_price_input_min = '//input[@id="price[min]"]'
+    select_price_input_max = '//input[@id="price[max]"]'
+    select_price_button_ok = '//button[@id="submitprice"]'
+
+    # select_button_ok = '//button[@class="bluebtn"]'
+
     # Getters
 
     def get_producer_show_all(self):
@@ -30,6 +39,22 @@ class Spinning_page(Base):
 
     def get_filter_reset(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_filter_reset)))
+
+    # PRICE
+    def get_price_slider_left(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_slider_left)))
+
+    def get_price_slide_right(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_slider_right)))
+
+    def get_price_button_ok(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_button_ok)))
+
+    def get_price_input_min(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_min)))
+
+    def get_price_input_max(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_price_input_max)))
 
     # Actions
 
@@ -57,6 +82,28 @@ class Spinning_page(Base):
         self.get_filter_reset().click()
         print('Click filter RESET')
 
+    def move_price_slider_left(self):
+        self.slider_left(self.select_price_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
+
+    def move_price_slider_right(self):
+        self.slider_right(self.select_price_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
+
+    def click_price_button_ok(self):
+        self.get_price_button_ok().click()
+        print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по цене
+
+    def input_price_input_min(self):
+        value = random.randint(200, 1000)
+        self.get_price_input_min().clear()
+        self.get_price_input_min().send_keys(value)
+        print(f'input_price_input_min {value}')
+
+    def input_price_input_max(self):
+        value = random.randint(10000, 28000)
+        self.get_price_input_max().clear()
+        self.get_price_input_max().send_keys(value)
+        print(f'input_price_input_max {value}')
+
     # Methods
 
     def run_configurator_list_spinning(self):
@@ -67,6 +114,10 @@ class Spinning_page(Base):
         self.click_producer_random_item(self.get_producer_list_all())
 
         self.click_filter_reset()
+
+        self.move_price_slider_left()
+
+
         time.sleep(3)
 
 
