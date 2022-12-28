@@ -32,8 +32,8 @@ class Spinning_page(Base):
 
     select_sort_items = '/html/body/div[11]/div[2]/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/select'
 
-    select_length_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
-    select_length_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
+    select_length_slider_left = '//*[@id="trackbar10625"]/a[1]/div/div'
+    select_length_slider_right = '//*[@id="trackbar10625"]/a[3]/div/div'
 
     select_length_input_min = '//input[@id="10625[min]"]'
     select_length_input_max = '//input[@id="10625[max]"]'
