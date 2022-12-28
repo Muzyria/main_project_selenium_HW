@@ -240,6 +240,9 @@ class Spinning_page(Base):
 
         self.move_length_slider_left()
         self.move_length_slider_right()
+        self.input_length_input_min()
+        self.input_length_input_max()
+
         self.click_length_button_ok()
 
         time.sleep(5)
