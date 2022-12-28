@@ -39,6 +39,20 @@ class Spinning_page(Base):
     select_length_input_max = '//input[@id="10625[max]"]'
     select_length_button_ok = '//button[@id="submit10625"]'
 
+    select_minimum_test_slider_left = '//*[@id="trackbar10643"]/a[1]/div/div'
+    select_minimum_test_slider_right = '//*[@id="trackbar10643"]/a[3]/div/div'
+
+    select_minimum_test_input_min = '//input[@id="10643[min]"]'
+    select_minimum_test_input_max = '//input[@id="10643[max]"]'
+    select_minimum_test_button_ok = '//button[@id="submit10643"]'
+
+    select_maximum_test_slider_left = '//*[@id="trackbar10625"]/a[1]/div/div'
+    select_maximum_test_slider_right = '//*[@id="trackbar10625"]/a[3]/div/div'
+
+    select_maximum_test_input_min = '//input[@id="10625[min]"]'
+    select_maximum_test_input_max = '//input[@id="10625[max]"]'
+    select_maximum_test_button_ok = '//button[@id="submit10625"]'
+
     # Getters
 
     def get_producer_show_all(self):
