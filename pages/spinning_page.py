@@ -19,7 +19,7 @@ class Spinning_page(Base):
     select_producer_show_all = '//span[text()="Показать еще..."]'
     select_producer_list_all = '//ul[@id="sort_producer"]'
 
-    select_type_of_rod_list_all = '//*[@id="sort_detail_10908"]'
+    select_type_of_rod_list_all = '//ul[@id="sort_detail_10908"]'
 
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
@@ -32,7 +32,12 @@ class Spinning_page(Base):
 
     select_sort_items = '/html/body/div[11]/div[2]/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/select'
 
+    select_length_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
+    select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
 
+    select_price_input_min = '//input[@id="price[min]"]'
+    select_price_input_max = '//input[@id="price[max]"]'
+    select_price_button_ok = '//button[@id="submitprice"]'
 
     # Getters
 
@@ -82,13 +87,6 @@ class Spinning_page(Base):
             print(item_name)
         print('Print producer_list_all')
 
-    def print_type_of_rod_list_all(self, val):
-        print(self.item_to_list(val))
-        for item in self.item_to_list(val):
-            item_name = item[:item.index('(')] if '(' in item else item
-            print(item_name)
-        print('Print type_of_rod_list_all')
-
     def click_producer_random_item(self, val):
         check_box_list = self.item_to_list(val)
         number_item = random.randint(1, len(check_box_list))
@@ -97,6 +95,22 @@ class Spinning_page(Base):
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))).click()
         print(f'Click {name_item}')
         time.sleep(3)
+
+    def print_type_of_rod_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print type_of_rod_list_all')
+
+    # def click_type_of_rod_random_item(self, val):
+    #     check_box_list = self.item_to_list(val)
+    #     number_item = random.randint(1, len(check_box_list))
+    #     name_item = check_box_list[number_item - 1]
+    #     self.go_to_element_actions(self.driver.find_element(By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))
+    #     WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))).click()
+    #     print(f'Click {name_item}')
+    #     time.sleep(3)
 
     def click_filter_reset(self):
         self.get_filter_reset().click()
@@ -168,7 +182,7 @@ class Spinning_page(Base):
         #
         # self.click_sort_items()
 
-        # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
+        self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
         time.sleep(5)
 
