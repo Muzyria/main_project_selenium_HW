@@ -254,18 +254,18 @@ class Spinning_page(Base):
 
     """MINIMUM TEST SLIDER"""
 
-    def move_length_slider_left(self):
+    def move_minimum_tes_t_slider_left(self):
         self.slider_left(self.select_length_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
 
-    def move_length_slider_right(self):
+    def move_minimum_tes_t_slider_right(self):
         self.slider_right(self.select_length_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
 
-    def click_length_button_ok(self):
+    def click_minimum_tes_t_button_ok(self):
         self.get_length_button_ok().click()
-        print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
+        print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по минитальному тесту
 
-    def input_length_input_min(self):
-        value = random.randint(1, 90)
+    def input_minimum_tes_t_input_min(self):
+        value = random.randint(0, 300)
         self.go_to_element_actions(self.get_length_input_min())
         current_min_val = self.get_length_input_min().get_attribute('value')
         time.sleep(1)
@@ -276,8 +276,8 @@ class Spinning_page(Base):
         # time.sleep(3)
         print(f'input_length_input_min {value}')
 
-    def input_length_input_max(self):
-        value = random.randint(100, 230)
+    def input_minimum_tes_t_input_max(self):
+        value = random.randint(400, 800)
         self.get_length_input_max().clear()
         self.go_to_element_actions(self.get_length_input_max())
         current_max_val = self.get_length_input_min().get_attribute('value')
@@ -293,18 +293,18 @@ class Spinning_page(Base):
 
     """MAXIMUM TEST SLIDER"""
 
-    def move_length_slider_left(self):
+    def move_maximum_tes_t_slider_left(self):
         self.slider_left(self.select_length_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
 
-    def move_length_slider_right(self):
+    def move_maximum_tes_t_slider_right(self):
         self.slider_right(self.select_length_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
 
-    def click_length_button_ok(self):
+    def click_maximum_tes_t_button_ok(self):
         self.get_length_button_ok().click()
         print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
 
-    def input_length_input_min(self):
-        value = random.randint(1, 90)
+    def input_maximum_tes_t_input_min(self):
+        value = random.randint(1, 300)
         self.go_to_element_actions(self.get_length_input_min())
         current_min_val = self.get_length_input_min().get_attribute('value')
         time.sleep(1)
@@ -315,8 +315,8 @@ class Spinning_page(Base):
         # time.sleep(3)
         print(f'input_length_input_min {value}')
 
-    def input_length_input_max(self):
-        value = random.randint(100, 230)
+    def input_maximum_tes_t_input_max(self):
+        value = random.randint(350, 600)
         self.get_length_input_max().clear()
         self.go_to_element_actions(self.get_length_input_max())
         current_max_val = self.get_length_input_min().get_attribute('value')
