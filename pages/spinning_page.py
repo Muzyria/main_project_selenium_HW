@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
-
+from selenium.common.exceptions import NoSuchElementException
 
 class Spinning_page(Base):
 
@@ -163,8 +163,16 @@ class Spinning_page(Base):
     def get_sort_items(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_sort_items)))
 
-
     # Actions
+
+    def no_such_element_exception(self):
+        try:
+            self.driver.find_element(By.XPATH, '//div[@class="alert alert-warning"]')
+            print('Element on page')
+            return True
+        except NoSuchElementException:
+            print('Zero element for U!')
+            return False
 
     def click_producer_show_all(self):
         self.get_producer_show_all().click()
