@@ -18,7 +18,7 @@ def test_by_main_page():
     mp.open_main_page()
 
     spin = Spinning_page(driver)
-    spin.run_configurator_list_spinning()
+
     spin.run_price_configurator()
     spin.run_length_configurator()
     spin.run_minimum_tes_t_confgurator()

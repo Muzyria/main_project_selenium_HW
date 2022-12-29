@@ -264,9 +264,11 @@ class Spinning_page(Base):
         print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по цене
 
     def input_price_input_min(self):
-        value = random.randint(200, 9000)
+        # value = random.randint(200, 9000)
         self.go_to_element_actions(self.get_price_input_min())
         current_min_val = self.get_price_input_min().get_attribute('value')
+        current_max_val = self.get_price_input_max().get_attribute('value')
+        value = random.randint(200, int(current_max_val / 3))
         time.sleep(1)
         self.get_price_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -276,10 +278,11 @@ class Spinning_page(Base):
         print(f'input_price_input_min {value}')
 
     def input_price_input_max(self):
-        value = random.randint(10000, 28000)
+        # value = random.randint(10000, 28000)
         self.get_price_input_max().clear()
         self.go_to_element_actions(self.get_price_input_max())
-        current_max_val = self.get_price_input_min().get_attribute('value')
+        current_max_val = self.get_price_input_max().get_attribute('value')
+        value = random.randint(int(current_max_val / 3), current_max_val)
         time.sleep(1)
         self.get_price_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -307,9 +310,11 @@ class Spinning_page(Base):
         print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
 
     def input_length_input_min(self):
-        value = random.randint(1, 90)
+        # value = random.randint(1, 90)
         self.go_to_element_actions(self.get_length_input_min())
         current_min_val = self.get_length_input_min().get_attribute('value')
+        current_max_val = self.get_length_input_max().get_attribute('value')
+        value = random.randint(1, int(current_max_val / 3))
         time.sleep(1)
         self.get_length_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -319,10 +324,11 @@ class Spinning_page(Base):
         print(f'input_length_input_min {value}')
 
     def input_length_input_max(self):
-        value = random.randint(100, 230)
+        # value = random.randint(100, 230)
         self.get_length_input_max().clear()
         self.go_to_element_actions(self.get_length_input_max())
-        current_max_val = self.get_length_input_min().get_attribute('value')
+        current_max_val = self.get_length_input_max().get_attribute('value')
+        value = random.randint(int(current_max_val / 3), current_max_val)
         time.sleep(1)
         self.get_length_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -351,9 +357,11 @@ class Spinning_page(Base):
         print('click_minimum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по минитальному тесту
 
     def input_minimum_tes_t_input_min(self):
-        value = random.randint(0, 300)
+        # value = random.randint(0, 300)
         self.go_to_element_actions(self.get_minimum_tes_t_input_min())
         current_min_val = self.get_minimum_tes_t_input_min().get_attribute('value')
+        current_max_val = self.get_minimum_tes_t_input_max().get_attribute('value')
+        value = random.randint(0, int(current_max_val / 3))
         time.sleep(1)
         self.get_minimum_tes_t_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -363,10 +371,11 @@ class Spinning_page(Base):
         print(f'input_minimum_tes_t_input_min {value}')
 
     def input_minimum_tes_t_input_max(self):
-        value = random.randint(400, 800)
+        # value = random.randint(400, 800)
         self.get_minimum_tes_t_input_max().clear()
         self.go_to_element_actions(self.get_minimum_tes_t_input_max())
-        current_max_val = self.get_minimum_tes_t_input_min().get_attribute('value')
+        current_max_val = self.get_minimum_tes_t_input_max().get_attribute('value')
+        value = random.randint(int(current_max_val / 3), current_max_val)
         time.sleep(1)
         self.get_minimum_tes_t_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -396,9 +405,11 @@ class Spinning_page(Base):
         print('click_maximum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по максимальному тесту
 
     def input_maximum_tes_t_input_min(self):
-        value = random.randint(1, 300)
+        # value = random.randint(1, 300)
         self.go_to_element_actions(self.get_maximum_tes_t_input_min())
         current_min_val = self.get_maximum_tes_t_input_min().get_attribute('value')
+        current_max_val = self.get_maximum_tes_t_input_max().get_attribute('value')
+        value = random.randint(1, int(current_max_val / 3))
         time.sleep(1)
         self.get_maximum_tes_t_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -408,10 +419,11 @@ class Spinning_page(Base):
         print(f'input_maximum_tes_t_input_min {value}')
 
     def input_maximum_tes_t_input_max(self):
-        value = random.randint(350, 600)
+        # value = random.randint(350, 600)
         self.get_maximum_tes_t_input_max().clear()
         self.go_to_element_actions(self.get_maximum_tes_t_input_max())
-        current_max_val = self.get_maximum_tes_t_input_min().get_attribute('value')
+        current_max_val = self.get_maximum_tes_t_input_max().get_attribute('value')
+        value = random.randint(int(current_max_val / 3), current_max_val)
         time.sleep(1)
         self.get_maximum_tes_t_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
