@@ -179,7 +179,7 @@ class Spinning_page(Base):
         try:
             self.get_producer_show_all().click()
             print('Click manufacturer_show_all')
-        except NoSuchElementException:
+        except Exception:
             print('Нет кнопки развернуть список')
 
     def print_producer_list_all(self, val):
