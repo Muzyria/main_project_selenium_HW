@@ -397,64 +397,45 @@ class Spinning_page(Base):
 
     def run_configurator_list_spinning(self):
         self.get_current_url()
-        # self.click_producer_show_all()
-        # self.print_producer_list_all(self.get_producer_list_all())
-
-        # self.click_producer_random_item(self.get_producer_list_all())
+        self.click_producer_show_all()
+        self.print_producer_list_all(self.get_producer_list_all())
+        self.click_producer_random_item(self.get_producer_list_all())
 
         # self.click_filter_reset()
 
-        time.sleep(3)
+    def run_price_configurator(self):
         """"слайдер выбора по цене"""
         self.move_price_slider_left()
         self.move_price_slider_right()
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
-        # self.click_sort_items()
-        time.sleep(10)
-        self.click_cart_button_first()
-        time.sleep(3)
-        self.click_continue_shopping_button()
-        time.sleep(3)
-        self.click_return_to_spinning_page()
-
-
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
+    def run_length_configurator(self):
         """слайдер выбора по длине"""
         self.move_length_slider_left()
         self.move_length_slider_right()
         self.input_length_input_min()
         self.input_length_input_max()
         self.click_length_button_ok()
-        # self.click_sort_items()
-        time.sleep(10)
-        self.click_cart_button_first()
-        time.sleep(3)
-        self.click_continue_shopping_button()
-        time.sleep(3)
+
+    def run_minimum_tes_t_confgurator(self):
+        """слайдер выбора по минимальному тесту"""
+        self.move_minimum_tes_t_slider_left()
+        self.move_minimum_tes_t_slider_right()
+        self.input_minimum_tes_t_input_min()
+        self.input_minimum_tes_t_input_max()
+        self.click_minimum_tes_t_button_ok()
         self.click_return_to_spinning_page()
-        #
-        # """слайдер выбора по минимальному тесту"""
-        # self.move_minimum_tes_t_slider_left()
-        # self.move_minimum_tes_t_slider_right()
-        # self.input_minimum_tes_t_input_min()
-        # self.input_minimum_tes_t_input_max()
-        # self.click_minimum_tes_t_button_ok()
-        # self.click_return_to_spinning_page()
-        # #
-        # """слайдер выбора по максимальному тесту"""
-        # self.move_maximum_tes_t_slider_left()
-        # self.move_maximum_tes_t_slider_right()
-        # self.input_maximum_tes_t_input_min()
-        # self.input_maximum_tes_t_input_max()
-        # self.click_maximum_tes_t_button_ok()
-        # self.click_return_to_spinning_page()
-        # print(self.cart_list)
 
-        time.sleep(5)
-
-
+    def run_maximum_tes_t_configurator(self):
+        """слайдер выбора по максимальному тесту"""
+        self.move_maximum_tes_t_slider_left()
+        self.move_maximum_tes_t_slider_right()
+        self.input_maximum_tes_t_input_min()
+        self.input_maximum_tes_t_input_max()
+        self.click_maximum_tes_t_button_ok()
+        self.click_return_to_spinning_page()
 
