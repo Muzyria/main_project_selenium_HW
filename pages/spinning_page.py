@@ -23,6 +23,8 @@ class Spinning_page(Base):
 
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
+    select_cart_button_first = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
+
     select_return_to_spinning_page = '/html/body/div[11]/div[2]/div/div[1]/nav/ul/li[2]/a/span'
 
     select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
@@ -71,6 +73,9 @@ class Spinning_page(Base):
 
     def get_return_to_spinning_page(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_return_to_spinning_page)))
+
+    def get_cart_button_first(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first)))
 
     # Getter PRICE
     def get_price_slider_left(self):
@@ -182,6 +187,10 @@ class Spinning_page(Base):
     def click_filter_reset(self):
         self.get_filter_reset().click()
         print('Click filter RESET')
+
+    def click_cart_button_first(self):
+        self.get_cart_button_first().click()
+        print('Click cart_button_first')
 
     def click_return_to_spinning_page(self):
         self.get_return_to_spinning_page().click()
@@ -358,42 +367,46 @@ class Spinning_page(Base):
         # self.click_producer_random_item(self.get_producer_list_all())
 
         # self.click_filter_reset()
+        time.sleep(10)
+        self.click_cart_button_first()
 
         """"слайдер выбора по цене"""
-        self.move_price_slider_left()
-        self.move_price_slider_right()
-        self.input_price_input_min()
-        self.input_price_input_max()
-        self.click_price_button_ok()
-        self.click_return_to_spinning_page()
+        # self.move_price_slider_left()
+        # self.move_price_slider_right()
+        # self.input_price_input_min()
+        # self.input_price_input_max()
+        # self.click_price_button_ok()
+        # self.click_return_to_spinning_page()
+        # time.sleep(5)
+        # self.click_cart_button_first()
 
         # self.click_sort_items()
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
-        """слайдер выбора по длине"""
-        self.move_length_slider_left()
-        self.move_length_slider_right()
-        self.input_length_input_min()
-        self.input_length_input_max()
-        self.click_length_button_ok()
-        self.click_return_to_spinning_page()
-
-        """слайдер выбора по минимальному тесту"""
-        self.move_minimum_tes_t_slider_left()
-        self.move_minimum_tes_t_slider_right()
-        self.input_minimum_tes_t_input_min()
-        self.input_minimum_tes_t_input_max()
-        self.click_minimum_tes_t_button_ok()
-        self.click_return_to_spinning_page()
-
-        """слайдер выбора по максимальному тесту"""
-        self.move_maximum_tes_t_slider_left()
-        self.move_maximum_tes_t_slider_right()
-        self.input_maximum_tes_t_input_min()
-        self.input_maximum_tes_t_input_max()
-        self.click_maximum_tes_t_button_ok()
-        self.click_return_to_spinning_page()
+        # """слайдер выбора по длине"""
+        # self.move_length_slider_left()
+        # self.move_length_slider_right()
+        # self.input_length_input_min()
+        # self.input_length_input_max()
+        # self.click_length_button_ok()
+        # self.click_return_to_spinning_page()
+        #
+        # """слайдер выбора по минимальному тесту"""
+        # self.move_minimum_tes_t_slider_left()
+        # self.move_minimum_tes_t_slider_right()
+        # self.input_minimum_tes_t_input_min()
+        # self.input_minimum_tes_t_input_max()
+        # self.click_minimum_tes_t_button_ok()
+        # self.click_return_to_spinning_page()
+        #
+        # """слайдер выбора по максимальному тесту"""
+        # self.move_maximum_tes_t_slider_left()
+        # self.move_maximum_tes_t_slider_right()
+        # self.input_maximum_tes_t_input_min()
+        # self.input_maximum_tes_t_input_max()
+        # self.click_maximum_tes_t_button_ok()
+        # self.click_return_to_spinning_page()
 
         time.sleep(5)
 
