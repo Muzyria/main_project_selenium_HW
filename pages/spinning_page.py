@@ -193,7 +193,9 @@ class Spinning_page(Base):
         check_box_list = self.item_to_list(val)
         number_item = random.randint(1, len(check_box_list))
         name_item = check_box_list[number_item - 1]
+        print(f'random select {name_item} and try click {number_item}')
         self.go_to_element_actions(self.driver.find_element(By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))
+        time.sleep(1)
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))).click()
         print(f'Click {name_item}')
         time.sleep(3)
