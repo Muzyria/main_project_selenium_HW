@@ -26,6 +26,7 @@ class Spinning_page(Base):
 
     """CART BUTTON AND MENU"""
     select_cart_button_first = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
+    select_cart_button_first_2 = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
     select_continue_shopping_button = '//*[@id="continue-shopping"]'
     select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
 
@@ -85,6 +86,8 @@ class Spinning_page(Base):
     """CART and mene"""
     def get_cart_button_first(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first)))
+    def get_cart_button_first_2(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first_2)))
 
     def get_continue_shopping_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_continue_shopping_button)))
@@ -205,10 +208,12 @@ class Spinning_page(Base):
 
     """CART and menu"""
     def click_cart_button_first(self):
-        self.get_cart_button_first().click()
-        print('Click cart_button_first')
-        self.print_product_name_for_add_cart()
-
+        try:
+            self.get_cart_button_first().click()
+            print('Click cart_button_first')
+            self.print_product_name_for_add_cart()
+        except Exception:
+            self.print_product_name_for_add_cart()
 
     def click_continue_shopping_button(self):
         self.get_continue_shopping_button().click()
@@ -406,6 +411,7 @@ class Spinning_page(Base):
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
+        # self.click_sort_items()
         time.sleep(10)
         self.click_cart_button_first()
         time.sleep(3)
@@ -413,34 +419,40 @@ class Spinning_page(Base):
         time.sleep(3)
         self.click_return_to_spinning_page()
 
-        # self.click_sort_items()
+
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
-        """слайдер выбора по длине"""
-        self.move_length_slider_left()
-        self.move_length_slider_right()
-        self.input_length_input_min()
-        self.input_length_input_max()
-        self.click_length_button_ok()
-        self.click_return_to_spinning_page()
-        #
-        """слайдер выбора по минимальному тесту"""
-        self.move_minimum_tes_t_slider_left()
-        self.move_minimum_tes_t_slider_right()
-        self.input_minimum_tes_t_input_min()
-        self.input_minimum_tes_t_input_max()
-        self.click_minimum_tes_t_button_ok()
-        self.click_return_to_spinning_page()
-        #
-        """слайдер выбора по максимальному тесту"""
-        self.move_maximum_tes_t_slider_left()
-        self.move_maximum_tes_t_slider_right()
-        self.input_maximum_tes_t_input_min()
-        self.input_maximum_tes_t_input_max()
-        self.click_maximum_tes_t_button_ok()
-        self.click_return_to_spinning_page()
-        print(self.cart_list)
+        # """слайдер выбора по длине"""
+        # self.move_length_slider_left()
+        # self.move_length_slider_right()
+        # self.input_length_input_min()
+        # self.input_length_input_max()
+        # self.click_length_button_ok()
+        # self.click_sort_items()
+        # time.sleep(10)
+        # self.click_cart_button_first()
+        # time.sleep(3)
+        # self.click_continue_shopping_button()
+        # time.sleep(3)
+        # self.click_return_to_spinning_page()
+        # #
+        # """слайдер выбора по минимальному тесту"""
+        # self.move_minimum_tes_t_slider_left()
+        # self.move_minimum_tes_t_slider_right()
+        # self.input_minimum_tes_t_input_min()
+        # self.input_minimum_tes_t_input_max()
+        # self.click_minimum_tes_t_button_ok()
+        # self.click_return_to_spinning_page()
+        # #
+        # """слайдер выбора по максимальному тесту"""
+        # self.move_maximum_tes_t_slider_left()
+        # self.move_maximum_tes_t_slider_right()
+        # self.input_maximum_tes_t_input_min()
+        # self.input_maximum_tes_t_input_max()
+        # self.click_maximum_tes_t_button_ok()
+        # self.click_return_to_spinning_page()
+        # print(self.cart_list)
 
         time.sleep(5)
 
