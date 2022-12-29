@@ -264,37 +264,37 @@ class Spinning_page(Base):
     """MINIMUM TEST SLIDER"""
 
     def move_minimum_tes_t_slider_left(self):
-        self.slider_left(self.select_length_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
+        self.slider_left(self.select_minimum_test_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
 
     def move_minimum_tes_t_slider_right(self):
-        self.slider_right(self.select_length_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
+        self.slider_right(self.select_minimum_test_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
 
     def click_minimum_tes_t_button_ok(self):
-        self.get_length_button_ok().click()
+        self.get_minimum_tes_t_button_ok().click()
         print('click_minimum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по минитальному тесту
 
     def input_minimum_tes_t_input_min(self):
         value = random.randint(0, 300)
-        self.go_to_element_actions(self.get_length_input_min())
-        current_min_val = self.get_length_input_min().get_attribute('value')
+        self.go_to_element_actions(self.get_minimum_tes_t_input_min())
+        current_min_val = self.get_minimum_tes_t_input_min().get_attribute('value')
         time.sleep(1)
-        self.get_length_input_min().send_keys(Keys.ARROW_DOWN)
+        self.get_minimum_tes_t_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
-            self.get_length_input_min().send_keys(Keys.BACKSPACE)
-        self.get_length_input_min().send_keys(value)
+            self.get_minimum_tes_t_input_min().send_keys(Keys.BACKSPACE)
+        self.get_minimum_tes_t_input_min().send_keys(value)
         # time.sleep(3)
         print(f'input_minimum_tes_t_input_min {value}')
 
     def input_minimum_tes_t_input_max(self):
         value = random.randint(400, 800)
-        self.get_length_input_max().clear()
-        self.go_to_element_actions(self.get_length_input_max())
-        current_max_val = self.get_length_input_min().get_attribute('value')
+        self.get_minimum_tes_t_input_max().clear()
+        self.go_to_element_actions(self.get_minimum_tes_t_input_max())
+        current_max_val = self.get_minimum_tes_t_input_min().get_attribute('value')
         time.sleep(1)
-        self.get_length_input_max().send_keys(Keys.ARROW_DOWN)
+        self.get_minimum_tes_t_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
-            self.get_length_input_max().send_keys(Keys.BACKSPACE)
-        self.get_length_input_max().send_keys(value)
+            self.get_minimum_tes_t_input_max().send_keys(Keys.BACKSPACE)
+        self.get_minimum_tes_t_input_max().send_keys(value)
         # time.sleep(3)
         print(f'input_minimum_tes_t_input_max {value}')
 
@@ -303,37 +303,37 @@ class Spinning_page(Base):
     """MAXIMUM TEST SLIDER"""
 
     def move_maximum_tes_t_slider_left(self):
-        self.slider_left(self.select_length_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
+        self.slider_left(self.select_maximum_test_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
 
     def move_maximum_tes_t_slider_right(self):
-        self.slider_right(self.select_length_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
+        self.slider_right(self.select_maximum_test_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
 
     def click_maximum_tes_t_button_ok(self):
-        self.get_length_button_ok().click()
-        print('click_maximum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
+        self.get_maximum_tes_t_button_ok().click()
+        print('click_maximum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по максимальному тесту
 
     def input_maximum_tes_t_input_min(self):
         value = random.randint(1, 300)
-        self.go_to_element_actions(self.get_length_input_min())
-        current_min_val = self.get_length_input_min().get_attribute('value')
+        self.go_to_element_actions(self.get_maximum_tes_t_input_min())
+        current_min_val = self.get_maximum_tes_t_input_min().get_attribute('value')
         time.sleep(1)
-        self.get_length_input_min().send_keys(Keys.ARROW_DOWN)
+        self.get_maximum_tes_t_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
-            self.get_length_input_min().send_keys(Keys.BACKSPACE)
-        self.get_length_input_min().send_keys(value)
+            self.get_maximum_tes_t_input_min().send_keys(Keys.BACKSPACE)
+        self.get_maximum_tes_t_input_min().send_keys(value)
         # time.sleep(3)
         print(f'input_maximum_tes_t_input_min {value}')
 
     def input_maximum_tes_t_input_max(self):
         value = random.randint(350, 600)
-        self.get_length_input_max().clear()
-        self.go_to_element_actions(self.get_length_input_max())
-        current_max_val = self.get_length_input_min().get_attribute('value')
+        self.get_maximum_tes_t_input_max().clear()
+        self.go_to_element_actions(self.get_maximum_tes_t_input_max())
+        current_max_val = self.get_maximum_tes_t_input_min().get_attribute('value')
         time.sleep(1)
-        self.get_length_input_max().send_keys(Keys.ARROW_DOWN)
+        self.get_maximum_tes_t_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
-            self.get_length_input_max().send_keys(Keys.BACKSPACE)
-        self.get_length_input_max().send_keys(value)
+            self.get_maximum_tes_t_input_max().send_keys(Keys.BACKSPACE)
+        self.get_maximum_tes_t_input_max().send_keys(value)
         # time.sleep(3)
         print(f'input_maximum_tes_t_input_max {value}')
 
@@ -352,32 +352,40 @@ class Spinning_page(Base):
 
     def run_configurator_list_spinning(self):
         self.get_current_url()
-        self.click_producer_show_all()
+        # self.click_producer_show_all()
         # self.print_producer_list_all(self.get_producer_list_all())
 
         # self.click_producer_random_item(self.get_producer_list_all())
 
         # self.click_filter_reset()
 
+        """"слайдер выбора по цене"""
+        self.move_price_slider_left()
+        self.move_price_slider_right()
+        self.input_price_input_min()
+        self.input_price_input_max()
+        self.click_price_button_ok()
+        self.click_return_to_spinning_page()
 
-        # self.move_price_slider_left()
-        # self.move_price_slider_right()
-        # self.click_price_button_ok()
-
-        # self.input_price_input_min()
-        # self.input_price_input_max()
-        # self.click_price_button_ok()
-        #
         # self.click_sort_items()
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
+        """слайдер выбора по длине"""
         self.move_length_slider_left()
         self.move_length_slider_right()
         self.input_length_input_min()
         self.input_length_input_max()
-
         self.click_length_button_ok()
+        self.click_return_to_spinning_page()
+
+        """слайдер выбора по минимальному тесту"""
+        self.move_minimum_tes_t_slider_left()
+        self.move_minimum_tes_t_slider_right()
+        self.input_minimum_tes_t_input_min()
+        self.input_minimum_tes_t_input_max()
+        self.click_minimum_tes_t_button_ok()
+        self.click_return_to_spinning_page()
 
         time.sleep(5)
 
