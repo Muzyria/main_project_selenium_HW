@@ -207,6 +207,8 @@ class Spinning_page(Base):
     def click_cart_button_first(self):
         self.get_cart_button_first().click()
         print('Click cart_button_first')
+        self.print_product_name_for_add_cart()
+
 
     def click_continue_shopping_button(self):
         self.get_continue_shopping_button().click()
@@ -214,6 +216,7 @@ class Spinning_page(Base):
 
     def print_product_name_for_add_cart(self):
         name_product = self.get_product_name_for_add_cart().text
+        self.cart_list.append(name_product)
         print(f'name_product {name_product}')
 
     def click_return_to_spinning_page(self):
@@ -403,13 +406,11 @@ class Spinning_page(Base):
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
-        # time.sleep(10)
-        # self.click_cart_button_first()
-        # self.print_product_name_for_add_cart()
-        # time.sleep(3)
-        # self.click_continue_shopping_button()
+        time.sleep(10)
+        self.click_cart_button_first()
         time.sleep(3)
-
+        self.click_continue_shopping_button()
+        time.sleep(3)
         self.click_return_to_spinning_page()
 
         # self.click_sort_items()
@@ -439,6 +440,7 @@ class Spinning_page(Base):
         self.input_maximum_tes_t_input_max()
         self.click_maximum_tes_t_button_ok()
         self.click_return_to_spinning_page()
+        print(self.cart_list)
 
         time.sleep(5)
 
