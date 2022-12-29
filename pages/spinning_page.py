@@ -23,6 +23,8 @@ class Spinning_page(Base):
 
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
+    select_return_to_spinning_page = '/html/body/div[11]/div[2]/div/div[1]/nav/ul/li[2]/a/span'
+
     select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
     select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
 
@@ -66,6 +68,9 @@ class Spinning_page(Base):
 
     def get_filter_reset(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_filter_reset)))
+
+    def get_return_to_spinning_page(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_return_to_spinning_page)))
 
     # Getter PRICE
     def get_price_slider_left(self):
@@ -178,6 +183,10 @@ class Spinning_page(Base):
         self.get_filter_reset().click()
         print('Click filter RESET')
 
+    def click_return_to_spinning_page(self):
+        self.get_return_to_spinning_page().click()
+        print('Click return_to_spinning_page')
+
     """PRICE SLIDER"""
     def move_price_slider_left(self):
         self.slider_left(self.select_price_slider_left)  # Левый слайдер двигаем в право рандомно от 0 до 50%
@@ -262,7 +271,7 @@ class Spinning_page(Base):
 
     def click_minimum_tes_t_button_ok(self):
         self.get_length_button_ok().click()
-        print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по минитальному тесту
+        print('click_minimum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по минитальному тесту
 
     def input_minimum_tes_t_input_min(self):
         value = random.randint(0, 300)
@@ -274,7 +283,7 @@ class Spinning_page(Base):
             self.get_length_input_min().send_keys(Keys.BACKSPACE)
         self.get_length_input_min().send_keys(value)
         # time.sleep(3)
-        print(f'input_length_input_min {value}')
+        print(f'input_minimum_tes_t_input_min {value}')
 
     def input_minimum_tes_t_input_max(self):
         value = random.randint(400, 800)
@@ -287,7 +296,7 @@ class Spinning_page(Base):
             self.get_length_input_max().send_keys(Keys.BACKSPACE)
         self.get_length_input_max().send_keys(value)
         # time.sleep(3)
-        print(f'input_length_input_max {value}')
+        print(f'input_minimum_tes_t_input_max {value}')
 
     # ------------------------------------------------------------------------------
 
@@ -301,7 +310,7 @@ class Spinning_page(Base):
 
     def click_maximum_tes_t_button_ok(self):
         self.get_length_button_ok().click()
-        print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
+        print('click_maximum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по длине
 
     def input_maximum_tes_t_input_min(self):
         value = random.randint(1, 300)
@@ -313,7 +322,7 @@ class Spinning_page(Base):
             self.get_length_input_min().send_keys(Keys.BACKSPACE)
         self.get_length_input_min().send_keys(value)
         # time.sleep(3)
-        print(f'input_length_input_min {value}')
+        print(f'input_maximum_tes_t_input_min {value}')
 
     def input_maximum_tes_t_input_max(self):
         value = random.randint(350, 600)
@@ -326,7 +335,7 @@ class Spinning_page(Base):
             self.get_length_input_max().send_keys(Keys.BACKSPACE)
         self.get_length_input_max().send_keys(value)
         # time.sleep(3)
-        print(f'input_length_input_max {value}')
+        print(f'input_maximum_tes_t_input_max {value}')
 
     # ------------------------------------------------------------------------------
 
