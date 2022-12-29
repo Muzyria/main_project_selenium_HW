@@ -70,7 +70,7 @@ class Base():
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = -50
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-        print(f'price_slider_left move to MAX_VALUE')
+        print(f'price_slider_left move to ZERO')
 
     """Method Slider right to MAX_VALUE"""
 
@@ -79,7 +79,7 @@ class Base():
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = 50
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-        print(f'price_slider_right move to ZERO')
+        print(f'price_slider_right move to MAX')
 
     """Go to specified element"""
 
