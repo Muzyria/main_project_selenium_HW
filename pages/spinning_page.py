@@ -248,6 +248,12 @@ class Spinning_page(Base):
     def move_price_slider_right(self):
         self.slider_right(self.select_price_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
 
+    def move_price_slider_left_zero(self):
+        self.slider_left_to_zero(self.select_price_slider_left)  # Левый слайдер двигаем to ZERO%
+
+    def move_price_slider_right_max(self):
+        self.slider_right_to_max_value(self.select_price_slider_right)  # Правый слайдер двигаем to MAX%
+
     def click_price_button_ok(self):
         self.get_price_button_ok().click()
         print('click_price_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по цене
@@ -284,6 +290,12 @@ class Spinning_page(Base):
 
     def move_length_slider_right(self):
         self.slider_right(self.select_length_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
+
+    def move_length_slider_left_zero(self):
+        self.slider_left_to_zero(self.select_length_slider_left)  # Левый слайдер двигаем to ZERO%
+
+    def move_length_slider_right_max(self):
+        self.slider_right_to_max_value(self.select_length_slider_right)  # Правый слайдер двигаем to MAX%
 
     def click_length_button_ok(self):
         self.get_length_button_ok().click()
@@ -323,6 +335,12 @@ class Spinning_page(Base):
     def move_minimum_tes_t_slider_right(self):
         self.slider_right(self.select_minimum_test_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
 
+    def move_minimum_tes_t_slider_left_zero(self):
+        self.slider_left_to_zero(self.select_minimum_test_slider_left)  # Левый слайдер двигаем to ZERO%
+
+    def move_minimum_tes_t_slider_right_max(self):
+        self.slider_right_to_max_value(self.select_minimum_test_slider_right)  # Правый слайдер двигаем to MAX%
+
     def click_minimum_tes_t_button_ok(self):
         self.get_minimum_tes_t_button_ok().click()
         print('click_minimum_tes_t_button_ok')  # Кнопка ПРИМЕНИТЬ фильтр по минитальному тесту
@@ -361,6 +379,12 @@ class Spinning_page(Base):
 
     def move_maximum_tes_t_slider_right(self):
         self.slider_right(self.select_maximum_test_slider_right)  # Правый слайдер двигаем в лево рандомно от 0 до 50%
+
+    def move_maximum_tes_t_slider_left_zero(self):
+        self.slider_left_to_zero(self.select_maximum_test_slider_left)  # Левый слайдер двигаем to ZERO%
+
+    def move_maximum_tes_t_slider_right_max(self):
+        self.slider_right_to_max_value(self.select_maximum_test_slider_right)  # Правый слайдер двигаем to MAX%
 
     def click_maximum_tes_t_button_ok(self):
         self.get_maximum_tes_t_button_ok().click()
@@ -414,57 +438,66 @@ class Spinning_page(Base):
 
     def run_price_configurator(self):
         """"слайдер выбора по цене"""
-        while True:
-            self.move_price_slider_left()
-            self.move_price_slider_right()
-            self.input_price_input_min()
-            self.input_price_input_max()
+
+        self.move_price_slider_left()
+        self.move_price_slider_right()
+        self.input_price_input_min()
+        self.input_price_input_max()
+        self.click_price_button_ok()
+        if self.no_such_element_exception():
+            print('SELECT PRICE OK !')
+        else:
+            self.move_price_slider_left_zero()
+            self.move_price_slider_right_max()
             self.click_price_button_ok()
-            if self.no_such_element_exception():
-                continue
-            else:
-                break
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
     def run_length_configurator(self):
         """слайдер выбора по длине"""
-        while True:
-            self.move_length_slider_left()
-            self.move_length_slider_right()
-            self.input_length_input_min()
-            self.input_length_input_max()
+
+        self.move_length_slider_left()
+        self.move_length_slider_right()
+        self.input_length_input_min()
+        self.input_length_input_max()
+        self.click_length_button_ok()
+        if self.no_such_element_exception():
+            print('SELECT LENGTH OK !')
+        else:
+            self.move_length_slider_left_zero()
+            self.move_length_slider_right_max()
             self.click_length_button_ok()
-            if self.no_such_element_exception():
-                continue
-            else:
-                break
 
     def run_minimum_tes_t_confgurator(self):
         """слайдер выбора по минимальному тесту"""
-        while True:
-            self.move_minimum_tes_t_slider_left()
-            self.move_minimum_tes_t_slider_right()
-            self.input_minimum_tes_t_input_min()
-            self.input_minimum_tes_t_input_max()
+
+        self.move_minimum_tes_t_slider_left()
+        self.move_minimum_tes_t_slider_right()
+        self.input_minimum_tes_t_input_min()
+        self.input_minimum_tes_t_input_max()
+        self.click_minimum_tes_t_button_ok()
+        if self.no_such_element_exception():
+            print('SELECT MINIMUM TEST OK !')
+        else:
+            self.move_minimum_tes_t_slider_left_zero()
+            self.move_minimum_tes_t_slider_right_max()
             self.click_minimum_tes_t_button_ok()
-            if self.no_such_element_exception():
-                continue
-            else:
-                break
+
         # self.click_return_to_spinning_page()
 
     def run_maximum_tes_t_configurator(self):
         """слайдер выбора по максимальному тесту"""
-        while True:
-            self.move_maximum_tes_t_slider_left()
-            self.move_maximum_tes_t_slider_right()
-            self.input_maximum_tes_t_input_min()
-            self.input_maximum_tes_t_input_max()
+
+        self.move_maximum_tes_t_slider_left()
+        self.move_maximum_tes_t_slider_right()
+        self.input_maximum_tes_t_input_min()
+        self.input_maximum_tes_t_input_max()
+        self.click_maximum_tes_t_button_ok()
+        if self.no_such_element_exception():
+            print('SELECT MAXIMUM TEST OK !')
+        else:
+            self.move_maximum_tes_t_slider_left_zero()
+            self.move_maximum_tes_t_slider_right_max()
             self.click_maximum_tes_t_button_ok()
-            if self.no_such_element_exception():
-                continue
-            else:
-                break
         # self.click_return_to_spinning_page()
 

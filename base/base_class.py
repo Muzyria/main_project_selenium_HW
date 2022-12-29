@@ -63,6 +63,24 @@ class Base():
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
         print(f'price_slider_right move to {value}')
 
+    """Method Slider Left to ZERO"""
+
+    def slider_left_to_zero(self, locator):
+        action = ActionChains(self.driver)
+        slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
+        value = -50
+        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+        print(f'price_slider_left move to MAX_VALUE')
+
+    """Method Slider right to MAX_VALUE"""
+
+    def slider_right_to_max_value(self, locator):
+        action = ActionChains(self.driver)
+        slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
+        value = 50
+        action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+        print(f'price_slider_right move to ZERO')
+
     """Go to specified element"""
 
     def go_to_element(self, element):
