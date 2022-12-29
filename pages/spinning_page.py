@@ -423,20 +423,20 @@ class Spinning_page(Base):
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
-        # """слайдер выбора по длине"""
-        # self.move_length_slider_left()
-        # self.move_length_slider_right()
-        # self.input_length_input_min()
-        # self.input_length_input_max()
-        # self.click_length_button_ok()
+        """слайдер выбора по длине"""
+        self.move_length_slider_left()
+        self.move_length_slider_right()
+        self.input_length_input_min()
+        self.input_length_input_max()
+        self.click_length_button_ok()
         # self.click_sort_items()
-        # time.sleep(10)
-        # self.click_cart_button_first()
-        # time.sleep(3)
-        # self.click_continue_shopping_button()
-        # time.sleep(3)
-        # self.click_return_to_spinning_page()
-        # #
+        time.sleep(10)
+        self.click_cart_button_first()
+        time.sleep(3)
+        self.click_continue_shopping_button()
+        time.sleep(3)
+        self.click_return_to_spinning_page()
+        #
         # """слайдер выбора по минимальному тесту"""
         # self.move_minimum_tes_t_slider_left()
         # self.move_minimum_tes_t_slider_right()
