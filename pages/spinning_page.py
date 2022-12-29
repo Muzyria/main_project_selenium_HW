@@ -176,8 +176,11 @@ class Spinning_page(Base):
             return False
 
     def click_producer_show_all(self):
-        self.get_producer_show_all().click()
-        print('Click manufacturer_show_all')
+        try:
+            self.get_producer_show_all().click()
+            print('Click manufacturer_show_all')
+        except NoSuchElementException:
+            print('Нет кнопки развернуть список')
 
     def print_producer_list_all(self, val):
         print(self.item_to_list(val))
