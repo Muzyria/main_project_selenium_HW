@@ -52,7 +52,7 @@ class Base():
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = random.randint(0, 50)
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-        print(f'price_slider_left move to {value}')
+        print(f'slider_left move to {value}')
 
     """Method Slider right to left"""
 
@@ -61,7 +61,7 @@ class Base():
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = random.randint(-50, 0)
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-        print(f'price_slider_right move to {value}')
+        print(f'slider_right move to {value}')
 
     """Method Slider Left to ZERO"""
 
@@ -70,7 +70,7 @@ class Base():
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = -100
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-        print(f'price_slider_left move to ZERO')
+        print(f'slider_left move to ZERO')
 
     """Method Slider right to MAX_VALUE"""
 
@@ -79,7 +79,7 @@ class Base():
         slider = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, locator)))
         value = 100
         action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
-        print(f'price_slider_right move to MAX')
+        print(f'slider_right move to MAX')
 
     """Go to specified element"""
 
