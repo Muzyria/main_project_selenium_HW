@@ -428,7 +428,7 @@ class Spinning_page(Base):
         self.input_minimum_tes_t_input_min()
         self.input_minimum_tes_t_input_max()
         self.click_minimum_tes_t_button_ok()
-        self.click_return_to_spinning_page()
+        # self.click_return_to_spinning_page()
 
     def run_maximum_tes_t_configurator(self):
         """слайдер выбора по максимальному тесту"""
@@ -437,5 +437,5 @@ class Spinning_page(Base):
         self.input_maximum_tes_t_input_min()
         self.input_maximum_tes_t_input_max()
         self.click_maximum_tes_t_button_ok()
-        self.click_return_to_spinning_page()
+        # self.click_return_to_spinning_page()
 
