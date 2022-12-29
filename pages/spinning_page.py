@@ -429,6 +429,7 @@ class Spinning_page(Base):
     # Methods
 
     def run_configurator_list_spinning(self):
+        """Блок выбора производителя"""
         self.get_current_url()
         self.click_producer_show_all()
         self.print_producer_list_all(self.get_producer_list_all())
