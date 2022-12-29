@@ -387,6 +387,14 @@ class Spinning_page(Base):
         self.click_minimum_tes_t_button_ok()
         self.click_return_to_spinning_page()
 
+        """слайдер выбора по максимальному тесту"""
+        self.move_maximum_tes_t_slider_left()
+        self.move_maximum_tes_t_slider_right()
+        self.input_maximum_tes_t_input_min()
+        self.input_maximum_tes_t_input_max()
+        self.click_maximum_tes_t_button_ok()
+        self.click_return_to_spinning_page()
+
         time.sleep(5)
 
 
