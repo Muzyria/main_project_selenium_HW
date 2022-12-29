@@ -169,10 +169,10 @@ class Spinning_page(Base):
         """Проверка на отсуцтвие результатов фильтра"""
         try:
             self.driver.find_element(By.XPATH, '//div[@class="alert alert-warning"]')
-            print('Пока все в норме продолжаем тест')
+            print('Не получилось ни чего выбрать, пробуем снова !')
             return True
         except NoSuchElementException:
-            print('Не получилось ни чего выбрать, пробуем снова !')
+            print('Пока все в норме продолжаем тест')
             return False
 
     def click_producer_show_all(self):
