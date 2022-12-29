@@ -13,6 +13,7 @@ class Spinning_page(Base):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
+        self.cart_list = []
 
     # Locators
 
@@ -23,9 +24,13 @@ class Spinning_page(Base):
 
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
+    """CART BUTTON AND MENU"""
     select_cart_button_first = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
+    select_continue_shopping_button = '//*[@id="continue-shopping"]'
+    select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
 
     select_return_to_spinning_page = '/html/body/div[11]/div[2]/div/div[1]/nav/ul/li[2]/a/span'
+    select_return_to_spinning_page_2 = '/html/body/div[12]/div[2]/div/div[1]/nav/ul/li[2]/a'
 
     select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
     select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
@@ -74,8 +79,18 @@ class Spinning_page(Base):
     def get_return_to_spinning_page(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_return_to_spinning_page)))
 
+    def get_return_to_spinning_page_2(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_return_to_spinning_page_2)))
+
+    """CART and mene"""
     def get_cart_button_first(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first)))
+
+    def get_continue_shopping_button(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_continue_shopping_button)))
+
+    def get_product_name_for_add_cart(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_name_for_add_cart)))
 
     # Getter PRICE
     def get_price_slider_left(self):
@@ -188,13 +203,26 @@ class Spinning_page(Base):
         self.get_filter_reset().click()
         print('Click filter RESET')
 
+    """CART and menu"""
     def click_cart_button_first(self):
         self.get_cart_button_first().click()
         print('Click cart_button_first')
 
+    def click_continue_shopping_button(self):
+        self.get_continue_shopping_button().click()
+        print('Click continue_shopping_button')
+
+    def print_product_name_for_add_cart(self):
+        name_product = self.get_product_name_for_add_cart().text
+        print(f'name_product {name_product}')
+
     def click_return_to_spinning_page(self):
-        self.get_return_to_spinning_page().click()
-        print('Click return_to_spinning_page')
+        try:
+            self.get_return_to_spinning_page().click()
+            print('Click return_to_spinning_page')
+        except Exception:
+            self.get_return_to_spinning_page_2().click()
+            print('Click return_to_spinning_page_2')
 
     """PRICE SLIDER"""
     def move_price_slider_left(self):
@@ -367,46 +395,50 @@ class Spinning_page(Base):
         # self.click_producer_random_item(self.get_producer_list_all())
 
         # self.click_filter_reset()
-        time.sleep(10)
-        self.click_cart_button_first()
 
+        time.sleep(3)
         """"слайдер выбора по цене"""
-        # self.move_price_slider_left()
-        # self.move_price_slider_right()
-        # self.input_price_input_min()
-        # self.input_price_input_max()
-        # self.click_price_button_ok()
-        # self.click_return_to_spinning_page()
-        # time.sleep(5)
+        self.move_price_slider_left()
+        self.move_price_slider_right()
+        self.input_price_input_min()
+        self.input_price_input_max()
+        self.click_price_button_ok()
+        # time.sleep(10)
         # self.click_cart_button_first()
+        # self.print_product_name_for_add_cart()
+        # time.sleep(3)
+        # self.click_continue_shopping_button()
+        time.sleep(3)
+
+        self.click_return_to_spinning_page()
 
         # self.click_sort_items()
 
         # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
-        # """слайдер выбора по длине"""
-        # self.move_length_slider_left()
-        # self.move_length_slider_right()
-        # self.input_length_input_min()
-        # self.input_length_input_max()
-        # self.click_length_button_ok()
-        # self.click_return_to_spinning_page()
+        """слайдер выбора по длине"""
+        self.move_length_slider_left()
+        self.move_length_slider_right()
+        self.input_length_input_min()
+        self.input_length_input_max()
+        self.click_length_button_ok()
+        self.click_return_to_spinning_page()
         #
-        # """слайдер выбора по минимальному тесту"""
-        # self.move_minimum_tes_t_slider_left()
-        # self.move_minimum_tes_t_slider_right()
-        # self.input_minimum_tes_t_input_min()
-        # self.input_minimum_tes_t_input_max()
-        # self.click_minimum_tes_t_button_ok()
-        # self.click_return_to_spinning_page()
+        """слайдер выбора по минимальному тесту"""
+        self.move_minimum_tes_t_slider_left()
+        self.move_minimum_tes_t_slider_right()
+        self.input_minimum_tes_t_input_min()
+        self.input_minimum_tes_t_input_max()
+        self.click_minimum_tes_t_button_ok()
+        self.click_return_to_spinning_page()
         #
-        # """слайдер выбора по максимальному тесту"""
-        # self.move_maximum_tes_t_slider_left()
-        # self.move_maximum_tes_t_slider_right()
-        # self.input_maximum_tes_t_input_min()
-        # self.input_maximum_tes_t_input_max()
-        # self.click_maximum_tes_t_button_ok()
-        # self.click_return_to_spinning_page()
+        """слайдер выбора по максимальному тесту"""
+        self.move_maximum_tes_t_slider_left()
+        self.move_maximum_tes_t_slider_right()
+        self.input_maximum_tes_t_input_min()
+        self.input_maximum_tes_t_input_max()
+        self.click_maximum_tes_t_button_ok()
+        self.click_return_to_spinning_page()
 
         time.sleep(5)
 
