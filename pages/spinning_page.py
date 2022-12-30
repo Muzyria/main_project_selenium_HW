@@ -268,7 +268,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_price_input_min())
         current_min_val = int(self.get_price_input_min().get_attribute('value'))
         current_max_val = int(self.get_price_input_max().get_attribute('value'))
-        value = random.randint(current_min_val, current_min_val + int(current_max_val / 5))
+        value = random.randint(current_min_val, current_min_val + int(current_max_val / 10))
         time.sleep(1)
         self.get_price_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -283,7 +283,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_price_input_max())
         current_min_val = int(self.get_price_input_min().get_attribute('value'))
         current_max_val = int(self.get_price_input_max().get_attribute('value'))
-        value = random.randint(current_max_val - int(current_max_val / 5), current_max_val)
+        value = random.randint(current_max_val - int(current_max_val / 10), current_max_val)
         time.sleep(1)
         self.get_price_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -315,7 +315,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_length_input_min())
         current_min_val = float(self.get_length_input_min().get_attribute('value'))
         current_max_val = float(self.get_length_input_max().get_attribute('value'))
-        value = random.uniform(current_min_val, round(current_min_val + float(current_max_val / 5), 2))
+        value = random.uniform(current_min_val, round(current_min_val + float(current_max_val / 10), 2))
         time.sleep(1)
         self.get_length_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -330,7 +330,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_length_input_max())
         current_min_val = float(self.get_length_input_min().get_attribute('value'))
         current_max_val = float(self.get_length_input_max().get_attribute('value'))
-        value = random.uniform(round(current_max_val - float(current_max_val / 5), 2), current_max_val)
+        value = random.uniform(round(current_max_val - float(current_max_val / 10), 2), current_max_val)
         time.sleep(1)
         self.get_length_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -363,7 +363,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_minimum_tes_t_input_min())
         current_min_val = int(self.get_minimum_tes_t_input_min().get_attribute('value'))
         current_max_val = int(self.get_minimum_tes_t_input_max().get_attribute('value'))
-        value = random.randint(current_min_val, current_min_val + int(current_max_val / 5))
+        value = random.randint(current_min_val, current_min_val + int(current_max_val / 10))
         time.sleep(1)
         self.get_minimum_tes_t_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -378,7 +378,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_minimum_tes_t_input_max())
         current_min_val = int(self.get_minimum_tes_t_input_min().get_attribute('value'))
         current_max_val = int(self.get_minimum_tes_t_input_max().get_attribute('value'))
-        value = random.randint(current_max_val - int(current_max_val / 5), current_max_val)
+        value = random.randint(current_max_val - int(current_max_val / 10), current_max_val)
         time.sleep(1)
         self.get_minimum_tes_t_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -412,7 +412,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_maximum_tes_t_input_min())
         current_min_val = int(self.get_maximum_tes_t_input_min().get_attribute('value'))
         current_max_val = int(self.get_maximum_tes_t_input_max().get_attribute('value'))
-        value = random.randint(current_min_val, current_min_val + int(current_max_val / 5))
+        value = random.randint(current_min_val, current_min_val + int(current_max_val / 10))
         time.sleep(1)
         self.get_maximum_tes_t_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -427,7 +427,7 @@ class Spinning_page(Base):
         self.go_to_element_actions(self.get_maximum_tes_t_input_max())
         current_min_val = int(self.get_maximum_tes_t_input_min().get_attribute('value'))
         current_max_val = int(self.get_maximum_tes_t_input_max().get_attribute('value'))
-        value = random.randint(current_max_val - int(current_max_val / 5), current_max_val)
+        value = random.randint(current_max_val - int(current_max_val / 10), current_max_val)
         time.sleep(1)
         self.get_maximum_tes_t_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
