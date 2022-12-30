@@ -17,20 +17,15 @@ class Spinning_page(Base):
 
     # Locators
 
+    """CHECKBOXES"""
     select_producer_show_all = '//span[text()="Показать еще..."]'
     select_producer_list_all = '//ul[@id="sort_producer"]'
-
     select_type_of_rod_list_all = '//ul[@id="sort_detail_10908"]'
-
-    select_number_of_sections_list_all = ''
-
-    select_line_up_action_list_all = ''
-
-    select_form_material_list_all = ''
-
-    select_handle_material_list_all = ''
-
-    select_tip_type_list_all = ''
+    select_number_of_sections_list_all = '//ul[@id="sort_10627"]'
+    select_line_up_action_list_all = '//ul[@id="sort_10631"]'
+    select_form_material_list_all = '//ul[@id="sort_10626"]'
+    select_handle_material_list_all = '//ul[@id="sort_10628"]'
+    select_tip_type_list_all = '//ul[@id="sort_10660"]'
 
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
