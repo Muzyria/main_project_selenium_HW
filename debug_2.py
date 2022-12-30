@@ -1,9 +1,2 @@
-n = 'AMD Athlon (34)'
-
-s = ' '.join(n.split(' ')[:-1])
-
-
-print(s, type(s))
-
-s2 = ''
-print(n[:n.index('(')] if '(' in n else n)
+import random
+print(round(random.uniform(1.5, 1.9),2))
