@@ -225,6 +225,41 @@ class Spinning_page(Base):
             print(item_name)
         print('Print type_of_rod_list_all')
 
+    def print_number_of_sections_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print number_of_sections_list_all')
+
+    def print_line_up_action_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print line_up_action_list_all')
+
+    def print_form_material_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print form_material_list_all')
+
+    def print_handle_material_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print handle_material_list_all')
+
+    def print_tip_type_list_all(self, val):
+        print(self.item_to_list(val))
+        for item in self.item_to_list(val):
+            item_name = item[:item.index('(')] if '(' in item else item
+            print(item_name)
+        print('Print tip_type_list_all')
+
     # def click_type_of_rod_random_item(self, val):
     #     check_box_list = self.item_to_list(val)
     #     number_item = random.randint(1, len(check_box_list))
