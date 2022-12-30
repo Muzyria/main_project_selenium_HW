@@ -22,6 +22,16 @@ class Spinning_page(Base):
 
     select_type_of_rod_list_all = '//ul[@id="sort_detail_10908"]'
 
+    select_number_of_sections_list_all = ''
+
+    select_line_up_action_list_all = ''
+
+    select_form_material_list_all = ''
+
+    select_handle_material_list_all = ''
+
+    select_tip_type_list_all = ''
+
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
     """CART BUTTON AND MENU"""
@@ -35,7 +45,6 @@ class Spinning_page(Base):
 
     select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
     select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
-
     select_price_input_min = '//input[@id="price[min]"]'
     select_price_input_max = '//input[@id="price[max]"]'
     select_price_button_ok = '//button[@id="submitprice"]'
@@ -44,21 +53,18 @@ class Spinning_page(Base):
 
     select_length_slider_left = '//*[@id="trackbar10625"]/a[1]/div/div'
     select_length_slider_right = '//*[@id="trackbar10625"]/a[3]/div/div'
-
     select_length_input_min = '//input[@id="10625[min]"]'
     select_length_input_max = '//input[@id="10625[max]"]'
     select_length_button_ok = '//button[@id="submit10625"]'
 
     select_minimum_test_slider_left = '//*[@id="trackbar10643"]/a[1]/div/div'
     select_minimum_test_slider_right = '//*[@id="trackbar10643"]/a[3]/div/div'
-
     select_minimum_test_input_min = '//input[@id="10643[min]"]'
     select_minimum_test_input_max = '//input[@id="10643[max]"]'
     select_minimum_test_button_ok = '//button[@id="submit10643"]'
 
     select_maximum_test_slider_left = '//*[@id="trackbar10644"]/a[1]/div/div'
     select_maximum_test_slider_right = '//*[@id="trackbar10644"]/a[3]/div/div'
-
     select_maximum_test_input_min = '//input[@id="10644[min]"]'
     select_maximum_test_input_max = '//input[@id="10644[max]"]'
     select_maximum_test_button_ok = '//button[@id="submit10644"]'
