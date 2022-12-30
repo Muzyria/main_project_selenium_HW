@@ -313,9 +313,9 @@ class Spinning_page(Base):
     def input_length_input_min(self):
         # value = random.randint(1, 90)
         self.go_to_element_actions(self.get_length_input_min())
-        current_min_val = int(self.get_length_input_min().get_attribute('value'))
-        current_max_val = int(self.get_length_input_max().get_attribute('value'))
-        value = random.randint(current_min_val, current_min_val + int(current_max_val / 3))
+        current_min_val = float(self.get_length_input_min().get_attribute('value'))
+        current_max_val = float(self.get_length_input_max().get_attribute('value'))
+        value = random.uniform(current_min_val, round(current_min_val + float(current_max_val / 3), 2))
         time.sleep(1)
         self.get_length_input_min().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
@@ -328,9 +328,9 @@ class Spinning_page(Base):
         # value = random.randint(100, 230)
         self.get_length_input_max().clear()
         self.go_to_element_actions(self.get_length_input_max())
-        current_min_val = int(self.get_length_input_min().get_attribute('value'))
-        current_max_val = int(self.get_length_input_max().get_attribute('value'))
-        value = random.randint(current_max_val - int(current_max_val / 3), current_max_val)
+        current_min_val = float(self.get_length_input_min().get_attribute('value'))
+        current_max_val = float(self.get_length_input_max().get_attribute('value'))
+        value = random.uniform(round(current_max_val - float(current_max_val / 3), 2), current_max_val)
         time.sleep(1)
         self.get_length_input_max().send_keys(Keys.ARROW_DOWN)
         for _ in range(8):
