@@ -66,6 +66,7 @@ class Spinning_page(Base):
 
     # Getters
 
+    """checkboxes"""
     def get_producer_show_all(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_producer_show_all)))
 
@@ -74,6 +75,22 @@ class Spinning_page(Base):
 
     def get_type_of_rod_list_all(self):
         return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_type_of_rod_list_all)))
+
+    def get_number_of_sections_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_number_of_sections_list_all)))
+
+    def get_line_up_action_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_line_up_action_list_all)))
+
+    def get_form_material_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_form_material_list_all)))
+
+    def get_handle_material_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_handle_material_list_all)))
+
+    def get_tip_type_list_all(self):
+        return WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located((By.XPATH, self.select_tip_type_list_all)))
+    """"""
 
     def get_filter_reset(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_filter_reset)))
