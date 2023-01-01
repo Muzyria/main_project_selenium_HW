@@ -305,14 +305,14 @@ class Spinning_page(Base):
     """CART and menu"""
     def click_cart_button_first(self):
         try:
-            self.go_to_element(self.get_cart_button_first())
+            self.go_to_element_actions(self.get_cart_button_first())
             time.sleep(2)
             self.get_cart_button_first().click()
             print('Click cart_button_first')
             self.print_product_name_for_add_cart()
             time.sleep(3)
         except Exception:
-            self.go_to_element(self.get_cart_button_first_2())
+            self.go_to_element_actions(self.get_cart_button_first_2())
             time.sleep(2)
             self.get_cart_button_first_2().click()
             print('Click cart_button_first_2')
@@ -621,5 +621,4 @@ class Spinning_page(Base):
 
     def run_add_to_cart(self):
         self.click_cart_button_first()
-        self.click_continue_shopping_button()
-        self.print_product_name_for_add_cart()
+        # self.click_continue_shopping_button()
