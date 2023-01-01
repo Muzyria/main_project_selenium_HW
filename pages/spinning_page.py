@@ -520,7 +520,8 @@ class Spinning_page(Base):
 
     # ------------------------------------------------------------------------------
 
-    def click_sort_items(self):  # сортировка по цене от дешевых
+    def click_sort_items(self):
+        """сортировка по цене от дешевых"""
         self.go_to_element_actions(self.get_sort_items())
         self.get_sort_items().click()
         print('Click sort items')
@@ -531,13 +532,16 @@ class Spinning_page(Base):
 
     # Methods
 
-    def run_configurator_list_spinning(self):
+    def run_producer_list_configurator(self):
         """Блок выбора производителя"""
         self.get_current_url()
         self.click_producer_show_all()
         self.print_producer_list_all(self.get_producer_list_all())
         self.click_producer_random_item(self.get_producer_list_all())
-
+        if self.no_such_cart_button_exception():
+            print('Нет кнопки добавить в корзину, пробуем повторить поиск')
+        else:
+            print('Кнопка добавить в корзину есть, продолжаем вибирать !')
         # self.click_filter_reset()
 
     def run_price_configurator(self):
