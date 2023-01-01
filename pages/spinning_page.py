@@ -27,6 +27,7 @@ class Spinning_page(Base):
     select_handle_material_list_all = '//ul[@id="sort_10628"]'
     select_tip_type_list_all = '//ul[@id="sort_10660"]'
 
+    # Сброс фильтра
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
     """CART BUTTON AND MENU"""
@@ -34,30 +35,37 @@ class Spinning_page(Base):
     select_cart_button_first_2 = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
     select_continue_shopping_button = '//*[@id="continue-shopping"]'
     select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
+    # -
 
+    """RETURN TO spiinning page"""
     select_return_to_spinning_page = '/html/body/div[11]/div[2]/div/div[1]/nav/ul/li[2]/a/span'
     select_return_to_spinning_page_2 = '/html/body/div[12]/div[2]/div/div[1]/nav/ul/li[2]/a'
 
+    """PRICE SLIDER and INPUT"""
     select_price_slider_left = '//*[@id="trackbarprice"]/a[1]/div/div'
     select_price_slider_right = '//*[@id="trackbarprice"]/a[3]/div/div'
     select_price_input_min = '//input[@id="price[min]"]'
     select_price_input_max = '//input[@id="price[max]"]'
     select_price_button_ok = '//button[@id="submitprice"]'
 
+    """LIST of SORT"""
     select_sort_items = '/html/body/div[11]/div[2]/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/select'
 
+    """LENGTH SLIDER and INPUT"""
     select_length_slider_left = '//*[@id="trackbar10625"]/a[1]/div/div'
     select_length_slider_right = '//*[@id="trackbar10625"]/a[3]/div/div'
     select_length_input_min = '//input[@id="10625[min]"]'
     select_length_input_max = '//input[@id="10625[max]"]'
     select_length_button_ok = '//button[@id="submit10625"]'
 
+    """MINIMUM TEST SLIDER and INPUT"""
     select_minimum_test_slider_left = '//*[@id="trackbar10643"]/a[1]/div/div'
     select_minimum_test_slider_right = '//*[@id="trackbar10643"]/a[3]/div/div'
     select_minimum_test_input_min = '//input[@id="10643[min]"]'
     select_minimum_test_input_max = '//input[@id="10643[max]"]'
     select_minimum_test_button_ok = '//button[@id="submit10643"]'
 
+    """MAXIMUM TEST SLIDER and INPUT"""
     select_maximum_test_slider_left = '//*[@id="trackbar10644"]/a[1]/div/div'
     select_maximum_test_slider_right = '//*[@id="trackbar10644"]/a[3]/div/div'
     select_maximum_test_input_min = '//input[@id="10644[min]"]'
@@ -101,7 +109,7 @@ class Spinning_page(Base):
     def get_return_to_spinning_page_2(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_return_to_spinning_page_2)))
 
-    """CART and mene"""
+    """CART and menu"""
     def get_cart_button_first(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first)))
     def get_cart_button_first_2(self):
@@ -193,7 +201,19 @@ class Spinning_page(Base):
             print('Пока все в норме продолжаем тест')
             return False
 
+    def no_such_cart_button_exception(self):
+        """Проверка на отсуцтвие кнопки добавить в корзину"""
+        try:
+            self.driver.find_element(By.XPATH, self.select_cart_button_first) \
+            or self.driver.find_element(By.XPATH, self.select_cart_button_first_2)
+            print('Нет кнопки добавить в корзину!')
+            return True
+        except NoSuchElementException:
+            print('Кнопка добавить в корзину есть продолжаем тест')
+            return False
+
     def click_producer_show_all(self):
+        """Кнопка развернуть показать все в блоке производителей"""
         try:
             self.get_producer_show_all().click()
             print('Click manufacturer_show_all')
@@ -201,6 +221,7 @@ class Spinning_page(Base):
             print('Нет кнопки развернуть список')
 
     def print_producer_list_all(self, val):
+        """Вывести в консоль список производителей"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -208,6 +229,7 @@ class Spinning_page(Base):
         print('Print producer_list_all')
 
     def click_producer_random_item(self, val):
+        """Выбор рандомного производителя и выбор его"""
         check_box_list = self.item_to_list(val)
         number_item = random.randint(1, len(check_box_list))
         name_item = check_box_list[number_item - 1]
@@ -219,6 +241,7 @@ class Spinning_page(Base):
         time.sleep(3)
 
     def print_type_of_rod_list_all(self, val):
+        """Вывести в консоль список типов удилища"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -226,6 +249,7 @@ class Spinning_page(Base):
         print('Print type_of_rod_list_all')
 
     def print_number_of_sections_list_all(self, val):
+        """Вывести в консоль список блока количества секций"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -233,6 +257,7 @@ class Spinning_page(Base):
         print('Print number_of_sections_list_all')
 
     def print_line_up_action_list_all(self, val):
+        """Вывести в консоль список блока строй удилища"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -240,6 +265,7 @@ class Spinning_page(Base):
         print('Print line_up_action_list_all')
 
     def print_form_material_list_all(self, val):
+        """Вывести в консоль список блока материал бланка"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -247,6 +273,7 @@ class Spinning_page(Base):
         print('Print form_material_list_all')
 
     def print_handle_material_list_all(self, val):
+        """Вывести в консоль список блока материал рукоятки"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -254,6 +281,7 @@ class Spinning_page(Base):
         print('Print handle_material_list_all')
 
     def print_tip_type_list_all(self, val):
+        """Вывести в консоль список блокаа тип вершинки"""
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
@@ -270,6 +298,7 @@ class Spinning_page(Base):
     #     time.sleep(3)
 
     def click_filter_reset(self):
+        """Сброс фильтра"""
         self.get_filter_reset().click()
         print('Click filter RESET')
 
