@@ -204,12 +204,12 @@ class Spinning_page(Base):
     def no_such_cart_button_exception(self):
         """Проверка на отсуцтвие кнопки добавить в корзину"""
         try:
-            self.driver.find_element(By.XPATH, self.select_cart_button_first) \
-            or self.driver.find_element(By.XPATH, self.select_cart_button_first_2)
-            print('Нет кнопки добавить в корзину!')
+            self.driver.find_element(By.XPATH, self.select_cart_button_first)
+            # or self.driver.find_element(By.XPATH, self.select_cart_button_first_2)
+            print('Кнопка добавить в корзину есть продолжаем тест')
             return True
         except NoSuchElementException:
-            print('Кнопка добавить в корзину есть продолжаем тест')
+            print('Нет кнопки добавить в корзину!')            
             return False
 
     def click_producer_show_all(self):

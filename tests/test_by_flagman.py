@@ -25,5 +25,7 @@ def test_by_main_page():
     # spin.run_maximum_tes_t_configurator()
     # spin.run_configurator_list_spinning()
 
+    spin.click_cart_button_first()
+
     time.sleep(20)
     driver.quit()
