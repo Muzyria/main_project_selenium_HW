@@ -585,7 +585,7 @@ class Spinning_page(Base):
         else:
             print('SELECT LENGTH OK !')
 
-    def run_minimum_tes_t_confgurator(self):
+    def run_minimum_tes_t_configurator(self):
         """слайдер выбора по минимальному тесту"""
         self.move_minimum_tes_t_slider_left()
         self.move_minimum_tes_t_slider_right()
