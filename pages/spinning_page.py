@@ -32,7 +32,8 @@ class Spinning_page(Base):
 
     """CART BUTTON AND MENU"""
     select_cart_button_first = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
-    select_cart_button_first_2 = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
+    select_cart_button_first_2 = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[2]/ul[1]/li[3]/a/i'
+                                #'//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[2]/ul[1]/li[3]/a/i'
     select_continue_shopping_button = '//*[@id="continue-shopping"]'
     select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
     # -
@@ -304,13 +305,19 @@ class Spinning_page(Base):
     """CART and menu"""
     def click_cart_button_first(self):
         try:
+            self.go_to_element(self.get_cart_button_first())
+            time.sleep(2)
             self.get_cart_button_first().click()
             print('Click cart_button_first')
             self.print_product_name_for_add_cart()
             time.sleep(3)
         except Exception:
-            # self.print_product_name_for_add_cart()
-            print('Ре получилось нажать кнопку корзины')
+            self.go_to_element(self.get_cart_button_first_2())
+            time.sleep(2)
+            self.get_cart_button_first_2().click()
+            print('Click cart_button_first_2')
+            self.print_product_name_for_add_cart()
+            time.sleep(3)
 
     def click_continue_shopping_button(self):
         self.get_continue_shopping_button().click()
