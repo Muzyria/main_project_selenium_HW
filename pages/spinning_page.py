@@ -21,6 +21,7 @@ class Spinning_page(Base):
     select_producer_show_all = '//span[text()="Показать еще..."]'
     select_producer_list_all = '//ul[@id="sort_producer"]'
     select_type_of_rod_list_all = '//ul[@id="sort_detail_10908"]'
+    select_type_of_rod_first_item = '/html/body/div[11]/div[3]/div/div[2]/div[1]/form/div[2]/div[5]/ul/li[1]/label/span[1]'
     select_number_of_sections_list_all = '//ul[@id="sort_10627"]'
     select_line_up_action_list_all = '//ul[@id="sort_10631"]'
     select_form_material_list_all = '//ul[@id="sort_10626"]'
@@ -237,6 +238,15 @@ class Spinning_page(Base):
         print(f'Click {name_item}')
         time.sleep(3)
 
+    def click_type_of_rod_first_item(self):
+        """Выбор первого пункта в блоке тип удилища"""
+        try:
+            self.go_to_element_actions(self.driver.find_element(By.XPATH, self.select_type_of_rod_list_all))
+            self.go_to_element_actions(self.driver.find_element(By.XPATH, self.select_type_of_rod_first_item))
+            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, self.select_type_of_rod_first_item))).click()
+        except Exception:
+            print('Не найден блок тип удилища')
+
     def print_type_of_rod_list_all(self, val):
         """Вывести в консоль список типов удилища"""
         print(self.item_to_list(val))
@@ -284,15 +294,6 @@ class Spinning_page(Base):
             item_name = item[:item.index('(')] if '(' in item else item
             print(item_name)
         print('Print tip_type_list_all')
-
-    # def click_type_of_rod_random_item(self, val):
-    #     check_box_list = self.item_to_list(val)
-    #     number_item = random.randint(1, len(check_box_list))
-    #     name_item = check_box_list[number_item - 1]
-    #     self.go_to_element_actions(self.driver.find_element(By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))
-    #     WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="sort_producer"]/li[{number_item}]'))).click()
-    #     print(f'Click {name_item}')
-    #     time.sleep(3)
 
     def click_filter_reset(self):
         """Сброс фильтра"""
@@ -548,7 +549,27 @@ class Spinning_page(Base):
                 time.sleep(5)
                 continue
 
-        # self.click_filter_reset()
+    def run_type_of_rod_configurator(self):
+        """Блок выбора типа удилища"""
+        while True:
+            self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
+            self.click_type_of_rod_first_item()
+            if self.no_such_cart_button_exception():
+                print('Выбран тип удилища !')
+                break
+            else:
+                print('Нет ')
+                time.sleep(5)
+                continue
+
+
+    '''
+    select_number_of_sections_list_all = '//ul[@id="sort_10627"]'
+    select_line_up_action_list_all = '//ul[@id="sort_10631"]'
+    select_form_material_list_all = '//ul[@id="sort_10626"]'
+    select_handle_material_list_all = '//ul[@id="sort_10628"]'
+    select_tip_type_list_all = '//ul[@id="sort_10660"]'
+    '''
 
     def run_price_configurator(self):
         """"слайдер выбора по цене"""
