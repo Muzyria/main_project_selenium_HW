@@ -565,7 +565,8 @@ class Spinning_page(Base):
         self.input_price_input_min()
         self.input_price_input_max()
         self.click_price_button_ok()
-        if self.no_such_element_exception():
+        # if self.no_such_element_exception():
+        if self.no_such_cart_button_exception():
             self.move_price_slider_left_zero()
             self.move_price_slider_right_max()
             self.click_price_button_ok()
@@ -582,7 +583,8 @@ class Spinning_page(Base):
         self.input_length_input_min()
         self.input_length_input_max()
         self.click_length_button_ok()
-        if self.no_such_element_exception():
+        # if self.no_such_element_exception():
+        if self.no_such_cart_button_exception():
             self.move_length_slider_left_zero()
             self.move_length_slider_right_max()
             self.click_length_button_ok()
@@ -596,7 +598,8 @@ class Spinning_page(Base):
         self.input_minimum_tes_t_input_min()
         self.input_minimum_tes_t_input_max()
         self.click_minimum_tes_t_button_ok()
-        if self.no_such_element_exception():
+        # if self.no_such_element_exception():
+        if self.no_such_cart_button_exception():
             self.move_minimum_tes_t_slider_left_zero()
             self.move_minimum_tes_t_slider_right_max()
             self.click_minimum_tes_t_button_ok()
@@ -611,7 +614,8 @@ class Spinning_page(Base):
         self.input_maximum_tes_t_input_min()
         self.input_maximum_tes_t_input_max()
         self.click_maximum_tes_t_button_ok()
-        if self.no_such_element_exception():
+        # if self.no_such_element_exception():
+        if self.no_such_cart_button_exception():
             self.move_maximum_tes_t_slider_left_zero()
             self.move_maximum_tes_t_slider_right_max()
             self.click_maximum_tes_t_button_ok()
