@@ -36,7 +36,8 @@ class Spinning_page(Base):
 
     select_continue_shopping_button = '//*[@id="continue-shopping"]'
     select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
-    # -
+    select_checkout_button = '//button[@class="checkout-btn btn red-btn floatRight"]'
+    #
 
     """RETURN TO spiinning page"""
     select_return_to_spinning_page = '/html/body/div[11]/div[2]/div/div[1]/nav/ul/li[2]/a/span'
@@ -116,6 +117,9 @@ class Spinning_page(Base):
 
     def get_continue_shopping_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_continue_shopping_button)))
+
+    def get_checkout_button(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_checkout_button)))
 
     def get_product_name_for_add_cart(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_name_for_add_cart)))
@@ -242,8 +246,8 @@ class Spinning_page(Base):
         """Выбор первого пункта в блоке тип удилища"""
         try:
             self.go_to_element_actions(self.driver.find_element(By.XPATH, self.select_type_of_rod_list_all))
-            self.go_to_element_actions(self.driver.find_element(By.XPATH, self.select_type_of_rod_first_item))
-            WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, self.select_type_of_rod_first_item))).click()
+            # self.go_to_element_actions(self.driver.find_element(By.XPATH, self.select_type_of_rod_first_item))
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.select_type_of_rod_first_item))).click()
         except Exception:
             print('Не найден блок тип удилища')
 
@@ -315,6 +319,10 @@ class Spinning_page(Base):
     def click_continue_shopping_button(self):
         self.get_continue_shopping_button().click()
         print('Click continue_shopping_button')
+
+    def click_checkout_button(self):
+        self.get_checkout_button().click()
+        print('Click checkout_button')
 
     def print_product_name_for_add_cart(self):
         name_product = self.get_product_name_for_add_cart().text
@@ -642,4 +650,4 @@ class Spinning_page(Base):
 
     def run_add_to_cart(self):
         self.click_cart_button_first()
-        # self.click_continue_shopping_button()
+        self.click_checkout_button()

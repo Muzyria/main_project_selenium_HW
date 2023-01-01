@@ -24,10 +24,12 @@ def test_by_main_page():
     # spin.run_minimum_tes_t_configurator()
     # spin.run_maximum_tes_t_configurator()
 
-    spin.run_type_of_rod_configurator()
+    # spin.run_type_of_rod_configurator()
 
 
     spin.run_add_to_cart()
+
+
 
     time.sleep(10)
     driver.quit()
