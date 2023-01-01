@@ -31,9 +31,8 @@ class Spinning_page(Base):
     select_filter_reset = '//a[@class="filter-resetHead"]'
 
     """CART BUTTON AND MENU"""
-    select_cart_button_first = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[3]/ul[1]/li[3]/a'
-    select_cart_button_first_2 = '//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[2]/ul[1]/li[3]/a/i'
-                                #'//*[@id="goods-parent"]/div[1]/div[1]/div/article/div[2]/ul[1]/li[3]/a/i'
+    select_cart_button_first = '//a[@name="topurchases"]'
+
     select_continue_shopping_button = '//*[@id="continue-shopping"]'
     select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
     # -
@@ -113,8 +112,6 @@ class Spinning_page(Base):
     """CART and menu"""
     def get_cart_button_first(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first)))
-    def get_cart_button_first_2(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_cart_button_first_2)))
 
     def get_continue_shopping_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_continue_shopping_button)))
@@ -205,7 +202,7 @@ class Spinning_page(Base):
     def no_such_cart_button_exception(self):
         """Проверка на отсуцтвие кнопки добавить в корзину"""
         try:
-            self.driver.find_element(By.XPATH, self.select_cart_button_first) or self.driver.find_element(By.XPATH, self.select_cart_button_first_2)
+            self.driver.find_element(By.XPATH, self.select_cart_button_first)
             print('Кнопка добавить в корзину есть продолжаем тест')
             return True
         except NoSuchElementException:
@@ -312,12 +309,7 @@ class Spinning_page(Base):
             self.print_product_name_for_add_cart()
             time.sleep(3)
         except Exception:
-            self.go_to_element_actions(self.get_cart_button_first_2())
-            time.sleep(2)
-            self.get_cart_button_first_2().click()
-            print('Click cart_button_first_2')
-            self.print_product_name_for_add_cart()
-            time.sleep(3)
+            print('Что то пошло не так. и не нашло кнопку корзины')
 
     def click_continue_shopping_button(self):
         self.get_continue_shopping_button().click()
@@ -567,6 +559,7 @@ class Spinning_page(Base):
         self.click_price_button_ok()
         # if self.no_such_element_exception():
         if not self.no_such_cart_button_exception():
+            print('Не получилось выбрать возвращаем цену назад')
             self.move_price_slider_left_zero()
             self.move_price_slider_right_max()
             self.click_price_button_ok()
@@ -585,6 +578,7 @@ class Spinning_page(Base):
         self.click_length_button_ok()
         # if self.no_such_element_exception():
         if not self.no_such_cart_button_exception():
+            print('Не получилось выбрать возвращаем длину назад')
             self.move_length_slider_left_zero()
             self.move_length_slider_right_max()
             self.click_length_button_ok()
@@ -600,6 +594,7 @@ class Spinning_page(Base):
         self.click_minimum_tes_t_button_ok()
         # if self.no_such_element_exception():
         if not self.no_such_cart_button_exception():
+            print('Не получилось выбрать возвращаем минимальный тест назад')
             self.move_minimum_tes_t_slider_left_zero()
             self.move_minimum_tes_t_slider_right_max()
             self.click_minimum_tes_t_button_ok()
@@ -616,6 +611,7 @@ class Spinning_page(Base):
         self.click_maximum_tes_t_button_ok()
         # if self.no_such_element_exception():
         if not self.no_such_cart_button_exception():
+            print('Не получилось выбрать возвращаем максимальный тест назад')
             self.move_maximum_tes_t_slider_left_zero()
             self.move_maximum_tes_t_slider_right_max()
             self.click_maximum_tes_t_button_ok()
