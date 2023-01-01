@@ -27,5 +27,5 @@ def test_by_main_page():
 
     spin.run_add_to_cart()
 
-    time.sleep(20)
+    time.sleep(10)
     driver.quit()

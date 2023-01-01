@@ -204,8 +204,7 @@ class Spinning_page(Base):
     def no_such_cart_button_exception(self):
         """Проверка на отсуцтвие кнопки добавить в корзину"""
         try:
-            self.driver.find_element(By.XPATH, self.select_cart_button_first)
-            # or self.driver.find_element(By.XPATH, self.select_cart_button_first_2)
+            self.driver.find_element(By.XPATH, self.select_cart_button_first) or self.driver.find_element(By.XPATH, self.select_cart_button_first_2)
             print('Кнопка добавить в корзину есть продолжаем тест')
             return True
         except NoSuchElementException:
@@ -308,8 +307,10 @@ class Spinning_page(Base):
             self.get_cart_button_first().click()
             print('Click cart_button_first')
             self.print_product_name_for_add_cart()
+            time.sleep(3)
         except Exception:
-            self.print_product_name_for_add_cart()
+            # self.print_product_name_for_add_cart()
+            print('Ре получилось нажать кнопку корзины')
 
     def click_continue_shopping_button(self):
         self.get_continue_shopping_button().click()
@@ -317,7 +318,7 @@ class Spinning_page(Base):
 
     def print_product_name_for_add_cart(self):
         name_product = self.get_product_name_for_add_cart().text
-        self.cart_list.append(name_product)
+        # self.cart_list.append(name_product)
         print(f'name_product {name_product}')
 
     def click_return_to_spinning_page(self):
@@ -545,6 +546,7 @@ class Spinning_page(Base):
             else:
                 print('Нет кнопки добавить в корзину, пробуем повторить поиск')
                 self.click_filter_reset()
+                time.sleep(5)
                 continue
 
         # self.click_filter_reset()
