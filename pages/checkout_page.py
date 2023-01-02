@@ -62,31 +62,31 @@ class Checkout_page(Base):
     # Actions
 
     def input_phone(self):
-        self.get_input_phone().send_key("31234567890")
+        self.get_input_phone().send_keys("31234567890")
         print('Input Phone')
 
     def input_first_name(self):
-        self.get_input_first_name().send_key("Иванов Иван")
+        self.get_input_first_name().send_keys("Иванов Иван")
         print('input_first_nam')
 
     def input_index(self):
-        self.get_input_index().send_key("12345")
+        self.get_input_index().send_keys("12345")
         print('Input index')
 
     def input_street(self):
-        self.get_input_street().send_key("Абрикосовая")
+        self.get_input_street().send_keys("Абрикосовая")
         print('Input street')
 
     def input_house(self):
-        self.get_input_house().send_key("100")
+        self.get_input_house().send_keys("100")
         print('Input House')
 
     def input_flat(self):
-        self.get_input_flat().send_key("10")
+        self.get_input_flat().send_keys("10")
         print('Input Flat')
 
     def input_comment(self):
-        self.get_input_comment().send_key("Все хорошо !")
+        self.get_input_comment().send_keys("Все хорошо !")
         print('Input Comment')
 
     def click_check_box_custom(self):
