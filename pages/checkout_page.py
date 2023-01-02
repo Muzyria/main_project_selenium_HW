@@ -98,12 +98,14 @@ class Checkout_page(Base):
     # Methods
 
     def run_checkout_page(self):
+        """Получение значений названия и цены"""
         self.get_current_url()
         time.sleep(5)
         self.checkout_list.append(self.get_title_checkout().text)
         self.checkout_list.append(self.get_total_checkout().text)
 
     def run_ordering(self):
+        """Заполнение полей для заказа"""
         self.input_phone()
         self.input_first_name()
         self.input_index()
