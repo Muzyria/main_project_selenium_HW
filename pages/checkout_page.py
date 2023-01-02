@@ -1,6 +1,5 @@
 import time
 
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,6 +17,16 @@ class Checkout_page(Base):
     select_total_checkout = '//td[@class="g-l-info-i g-l-info-price"]'
     select_title_checkout = '//a[@class="cart-g-l-i-title-link"]'
 
+    select_input_phone = '//input[@name="login"]'
+    select_input_first_name = '//input[@name="first_name"]'
+    select_input_index = '//input[@name="index"]'
+    select_input_street = '//input[@name="street"]'
+    select_input_house = '//input[@name="house"]'
+    select_input_flat = '//input[@name="flat"]'
+    select_input_comment = '//input[@name="comment"]'
+
+    select_check_box_custom = '//span[@class="checkbox-custom"]'
+
     # Getters
 
     def get_total_checkout(self):
@@ -26,11 +35,63 @@ class Checkout_page(Base):
     def get_title_checkout(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_title_checkout)))
 
+    def get_input_phone(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_phone)))
+
+    def get_input_first_name(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_first_name)))
+
+    def get_input_index(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_index)))
+
+    def get_input_street(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_street)))
+
+    def get_input_house(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_house)))
+
+    def get_input_flat(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_flat)))
+
+    def get_input_comment(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_input_comment)))
+
+    def get_check_box_custom(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_check_box_custom)))
+
     # Actions
 
-    # def click_link_configurator(self):
-    #     self.get_link_configurator().click()
-    #     print('Click link_configurator')
+    def input_phone(self):
+        self.get_input_phone().send_key("31234567890")
+        print('Input Phone')
+
+    def input_first_name(self):
+        self.get_input_first_name().send_key("Иванов Иван")
+        print('input_first_nam')
+
+    def input_index(self):
+        self.get_input_index().send_key("12345")
+        print('Input index')
+
+    def input_street(self):
+        self.get_input_street().send_key("Абрикосовая")
+        print('Input street')
+
+    def input_house(self):
+        self.get_input_house().send_key("100")
+        print('Input House')
+
+    def input_flat(self):
+        self.get_input_flat().send_key("10")
+        print('Input Flat')
+
+    def input_comment(self):
+        self.get_input_comment().send_key("Все хорошо !")
+        print('Input Comment')
+
+    def click_check_box_custom(self):
+        self.get_check_box_custom().click()
+        print('Click Check Box Custom')
 
     # Methods
 
@@ -38,12 +99,11 @@ class Checkout_page(Base):
         self.get_current_url()
         self.checkout_list.append(self.get_title_checkout().text)
         self.checkout_list.append(self.get_total_checkout().text)
-
-
-
-
-
-
-
-
-
+        self.input_phone()
+        self.input_first_name()
+        self.input_index()
+        self.input_street()
+        self.input_house()
+        self.input_flat()
+        self.input_comment()
+        self.click_check_box_custom()

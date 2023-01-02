@@ -231,7 +231,7 @@ class Spinning_page(Base):
         print(self.item_to_list(val))
         for item in self.item_to_list(val):
             item_name = item[:item.index('(')] if '(' in item else item
-            print(item_name)
+            # print(item_name)
         print('Print producer_list_all')
 
     def click_producer_random_item(self, val):

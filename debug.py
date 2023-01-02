@@ -1,7 +1,4 @@
-import os
-import random
 
-# from gata.data import Person, Color, Date
 from faker import Faker
 
 faker_ru = Faker("ru_RU")
