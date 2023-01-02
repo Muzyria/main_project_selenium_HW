@@ -11,30 +11,34 @@ class Checkout_page(Base):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
+        self.checkout_list = []
 
     # Locators
 
-    select_link_configurator = '//a[@id="out-link-5"]'
-
+    select_total_checkout = '//div[@id="cart_total"]'
+    select_title_checkout = '//a[@class="cart-g-l-i-title-link"]'
 
     # Getters
 
-    def get_link_configurator(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_link_configurator)))
+    def get_total_checkout(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_total_checkout)))
 
+    def get_title_checkout(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_title_checkout)))
 
     # Actions
 
-    def click_link_configurator(self):
-        self.get_link_configurator().click()
-        print('Click link_configurator')
-
-
+    # def click_link_configurator(self):
+    #     self.get_link_configurator().click()
+    #     print('Click link_configurator')
 
     # Methods
 
-    def open_main_page(self):
-        self.driver.get(self.url)
+    def run_checkout_page(self):
+        self.get_current_url()
+        self.checkout_list.append(self.get_title_checkout().text)
+        self.checkout_list.append(self.get_total_checkout().text)
+
 
 
 

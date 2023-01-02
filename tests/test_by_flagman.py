@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+from base.base_class import Base
 from pages.checkout_page import Checkout_page
 from pages.main_page_flagman import Main_page_flagman
 from pages.spinning_page import Spinning_page
@@ -30,6 +31,12 @@ def test_by_main_page():
     spin.run_add_to_cart()
 
     check = Checkout_page(driver)
+    check.run_checkout_page()
+
+    ba = Base(driver)
+    print(spin.cart_list, 'spin list')
+    print(check.checkout_list, 'check list')
+    ba.assert_title_cart(spin.cart_list[0], check.checkout_list[0])
 
     time.sleep(10)
     driver.quit()

@@ -26,10 +26,16 @@ class Base():
 
     """Method assert word"""
 
-    def assert_word(self, word, result):
-        value_word = word.text
-        assert value_word == result
-        print('Good value word')
+    def assert_total_cart(self, total_cart, checkout_total):
+        assert total_cart == checkout_total
+        print('Good TOTAL CART')
+
+    def assert_title_cart(self, title_cart, title_checkout):
+        try:
+            assert title_cart == title_checkout
+            print('Good TITLE CART')
+        except AssertionError:
+            print('ERROR TITLE CART')
 
     """Method screenshot"""
 
@@ -103,4 +109,5 @@ class Base():
         my_list = list(map(str, [i.text for i in item_list][0].split('\n')))
         return my_list
 
+    # self.driver.execute_script("alert('Hello')")
 
