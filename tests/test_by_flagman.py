@@ -35,8 +35,6 @@ def test_by_main_page():
 
     ba = Base(driver)
 
-    print(spin.cart_list, 'spin list')
-    print(check.checkout_list, 'check list')
     ba.assert_title_cart(spin.cart_list[0], check.checkout_list[0])
     ba.assert_total_cart(spin.cart_list[1], check.checkout_list[1])
 

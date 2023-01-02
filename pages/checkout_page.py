@@ -23,7 +23,7 @@ class Checkout_page(Base):
     select_input_street = '//input[@name="street"]'
     select_input_house = '//input[@name="house"]'
     select_input_flat = '//input[@name="flat"]'
-    select_input_comment = '//input[@name="comment"]'
+    select_input_comment = '//textarea[@name="comment"]'
 
     select_check_box_custom = '//span[@class="checkbox-custom"]'
 
@@ -86,10 +86,12 @@ class Checkout_page(Base):
         print('Input Flat')
 
     def input_comment(self):
+        self.go_to_element_actions(self.get_input_comment())
         self.get_input_comment().send_keys("Все хорошо !")
         print('Input Comment')
 
     def click_check_box_custom(self):
+        self.go_to_element_actions(self.get_check_box_custom())
         self.get_check_box_custom().click()
         print('Click Check Box Custom')
 
@@ -97,6 +99,7 @@ class Checkout_page(Base):
 
     def run_checkout_page(self):
         self.get_current_url()
+        time.sleep(5)
         self.checkout_list.append(self.get_title_checkout().text)
         self.checkout_list.append(self.get_total_checkout().text)
 
