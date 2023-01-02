@@ -580,15 +580,6 @@ class Spinning_page(Base):
                 time.sleep(5)
                 continue
 
-
-    '''
-    select_number_of_sections_list_all = '//ul[@id="sort_10627"]'
-    select_line_up_action_list_all = '//ul[@id="sort_10631"]'
-    select_form_material_list_all = '//ul[@id="sort_10626"]'
-    select_handle_material_list_all = '//ul[@id="sort_10628"]'
-    select_tip_type_list_all = '//ul[@id="sort_10660"]'
-    '''
-
     def run_price_configurator(self):
         """"слайдер выбора по цене"""
         self.move_price_slider_left()
@@ -604,9 +595,6 @@ class Spinning_page(Base):
             self.click_price_button_ok()
         else:
             print('SELECT PRICE OK !')
-
-
-        # self.print_type_of_rod_list_all(self.get_type_of_rod_list_all())
 
     def run_length_configurator(self):
         """слайдер выбора по длине"""
@@ -639,7 +627,6 @@ class Spinning_page(Base):
             self.click_minimum_tes_t_button_ok()
         else:
             print('SELECT MINIMUM TEST OK !')
-        # self.click_return_to_spinning_page()
 
     def run_maximum_tes_t_configurator(self):
         """слайдер выбора по максимальному тесту"""
@@ -656,8 +643,8 @@ class Spinning_page(Base):
             self.click_maximum_tes_t_button_ok()
         else:
             print('SELECT MAXIMUM TEST OK !')
-        # self.click_return_to_spinning_page()
 
     def run_add_to_cart(self):
+        """Нажатие на кнопку корзины"""
         self.click_cart_button_first()
         self.click_checkout_button()
