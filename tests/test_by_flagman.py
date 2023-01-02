@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+from pages.checkout_page import Checkout_page
 from pages.main_page_flagman import Main_page_flagman
 from pages.spinning_page import Spinning_page
 
@@ -26,10 +27,9 @@ def test_by_main_page():
 
     # spin.run_type_of_rod_configurator()
 
-
     spin.run_add_to_cart()
 
-
+    check = Checkout_page(driver)
 
     time.sleep(10)
     driver.quit()
