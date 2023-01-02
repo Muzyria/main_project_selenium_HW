@@ -36,6 +36,7 @@ class Spinning_page(Base):
 
     select_continue_shopping_button = '//*[@id="continue-shopping"]'
     select_product_name_for_add_cart = '//*[@id="cart_item1"]/div/div[2]/div'
+    select_product_total_cart = '//span[@id="cart_total"]'
     select_checkout_button = '//button[@class="checkout-btn btn red-btn floatRight"]'
     #
 
@@ -123,6 +124,9 @@ class Spinning_page(Base):
 
     def get_product_name_for_add_cart(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_name_for_add_cart)))
+
+    def get_product_total_cart(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_total_cart)))
 
     # Getter PRICE
     def get_price_slider_left(self):
@@ -312,6 +316,7 @@ class Spinning_page(Base):
             self.get_cart_button_first().click()
             print('Click cart_button_first')
             self.print_product_name_for_add_cart()
+            self.print_product_total_cart()
             time.sleep(3)
         except Exception:
             print('Что то пошло не так. и не нашло кнопку корзины')
@@ -326,8 +331,13 @@ class Spinning_page(Base):
 
     def print_product_name_for_add_cart(self):
         name_product = self.get_product_name_for_add_cart().text
-        # self.cart_list.append(name_product)
+        self.cart_list.append(name_product)
         print(f'name_product {name_product}')
+
+    def print_product_total_cart(self):
+        total_product = self.get_product_total_cart().text
+        self.cart_list.append(total_product)
+        print(f'Total_product {total_product}')
 
     def click_return_to_spinning_page(self):
         try:
