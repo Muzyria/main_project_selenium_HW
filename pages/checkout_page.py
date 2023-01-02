@@ -15,7 +15,7 @@ class Checkout_page(Base):
 
     # Locators
 
-    select_total_checkout = '//div[@id="cart_total"]'
+    select_total_checkout = '//td[@class="g-l-info-i g-l-info-price"]'
     select_title_checkout = '//a[@class="cart-g-l-i-title-link"]'
 
     # Getters

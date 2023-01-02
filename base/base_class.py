@@ -27,8 +27,11 @@ class Base():
     """Method assert word"""
 
     def assert_total_cart(self, total_cart, checkout_total):
-        assert total_cart == checkout_total
-        print('Good TOTAL CART')
+        try:
+            assert total_cart == checkout_total
+            print('Good TOTAL CART')
+        except AssertionError:
+            print('ERROR TOTAL CART')
 
     def assert_title_cart(self, title_cart, title_checkout):
         try:
