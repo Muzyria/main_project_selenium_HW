@@ -99,6 +99,8 @@ class Checkout_page(Base):
         self.get_current_url()
         self.checkout_list.append(self.get_title_checkout().text)
         self.checkout_list.append(self.get_total_checkout().text)
+
+    def run_ordering(self):
         self.input_phone()
         self.input_first_name()
         self.input_index()
